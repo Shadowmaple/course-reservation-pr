@@ -1,0 +1,6 @@
+.msg-blue {
+  color: blue;
+}
+.msg-red {
+  color: red;
+}

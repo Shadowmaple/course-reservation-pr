@@ -1,18 +1,34 @@
 // pages/index/index.js
+
+// 获取应用实例
+const app = getApp();
+var flag = true;
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    msgColor: "msg-blue",
+  },
 
+  clickMsg: function() {
+    console.log("click msg");
+    console.log("change msg's color");
+    var color = this.data.msgColor;
+    console.log(color);
+    if (flag) {
+      color = "msg-red";
+      flag = false;
+    } else {
+      color = "msg-blue";
+      flag = true;
+    }
+    this.setData({msgColor: color});
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('app.golbalData: ', app.gloablData);
   },
 
   /**
@@ -37,13 +53,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
@@ -56,11 +65,4 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -1,3 +1,6 @@
 <view class="container">
-  Hello world!
+  <view class="{{msgColor}}" bindtap="clickMsg">
+    Hello world!
+  </view>
+
 </view>
