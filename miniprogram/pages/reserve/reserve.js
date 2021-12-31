@@ -1,4 +1,4 @@
-// pages/chooseLib/chooseLib.js
+// pages/reserve/reserve.js
 Page({
 
   /**

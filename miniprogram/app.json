@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/user-page/user",
+    "pages/reserve/reserve"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -11,6 +11,22 @@
     "navigationBarTitleText": "网络课程预约系统",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/reserve/reserve",
+      "text": "预约"
+    }, {
+      "pagePath": "pages/user-page/user",
+      "text": "我的"
+    }]
+  },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }
