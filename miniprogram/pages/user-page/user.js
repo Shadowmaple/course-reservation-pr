@@ -3,30 +3,41 @@ const app = getApp()
 
 Page({
   data: {
-    avatarUrl: './user-unlogin.png',
+    avatarUrl: '../../images/user-unlogin.png',
     userInfo: {},
     hasUserInfo: false,
-    logged: false,
-    takeSession: false,
+    nickName: "未登录",
     requestResult: '',
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') // 如需尝试获取用户信息可改为false
+    // canIUseGetUserProfile: true,
+    // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') // 如需尝试获取用户信息可改为false
   },
 
-  onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-    if (wx.getUserProfile) {
+  onLoad: function () {
+    console.log('golbalData: ', app.globalData)
+    if (app.globalData.hasUserInfo) {
+      var userInfo = app.globalData.userInfo
+      var nickName = this.nickName
+      if (userInfo.nickName) {
+        nickName = userInfo.nickName
+      }
+      var avatarUrl = this.avatarUrl
+      if (userInfo.avatarUrl) {
+        avatarUrl = userInfo.avatarUrl
+      }
       this.setData({
-        canIUseGetUserProfile: true,
+        avatarUrl: avatarUrl,
+        userInfo: userInfo,
+        hasUserInfo: true,
+        nickName: nickName,
       })
     }
   },
 
+  // getUserProfile() {
+  //   app.getUserInfo()
+  // },
+
+/*
   getUserProfile() {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
@@ -41,7 +52,7 @@ Page({
     })
   },
 
-  onGetUserInfo: function(e) {
+  onGetUserInfo: function (e) {
     if (!this.data.logged && e.detail.userInfo) {
       this.setData({
         logged: true,
@@ -51,28 +62,7 @@ Page({
       })
     }
   },
-
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
-    })
-  },
-
+*/
   // 上传图片
   doUpload: function () {
     // 选择图片
@@ -86,7 +76,7 @@ Page({
         })
 
         const filePath = res.tempFilePaths[0]
-        
+
         // 上传图片
         const cloudPath = `my-image${filePath.match(/\.[^.]+?$/)[0]}`
         wx.cloud.uploadFile({
@@ -98,7 +88,7 @@ Page({
             app.globalData.fileID = res.fileID
             app.globalData.cloudPath = cloudPath
             app.globalData.imagePath = filePath
-            
+
             wx.navigateTo({
               url: '../storageConsole/storageConsole'
             })

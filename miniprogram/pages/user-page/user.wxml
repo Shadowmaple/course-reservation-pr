@@ -9,28 +9,22 @@
     </view>
   </block>
   <block wx:elif="{{!hasUserInfo}}">
-    <button 
+    <!-- <button 
       wx:if="{{canIUseGetUserProfile}}" 
       bindtap="getUserProfile"
       class="userinfo-avatar"
       style="background-image: url({{avatarUrl}})"
       size="default"
-    ></button>
-    <button
-      wx:else
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button>
+    ></button> -->
+    <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
   </block>
   <block wx:else>
     <image bindtap="bindViewTap" class="userinfo-block-avatar" src="{{avatarUrl}}" mode="cover"></image>
   </block>
-  <view class="userinfo-nickname-wrapper">
+  <view class="userinfo-nickname">{{nickName}}</view>
+  <!-- <view class="userinfo-nickname-wrapper">
     <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-  </view>
+  </view> -->
 </view>
 
 
