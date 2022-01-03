@@ -3,12 +3,7 @@
 
   <!-- 用户 -->
   <view class="userinfo">
-    <block wx:if="{{!hasUserInfo}}">
-      <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-block-avatar" src="{{avatarUrl}}" mode="cover"></image>
-    </block>
+    <image class="userinfo-avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
     <view class="userinfo-nickname">{{nickName}}</view>
   </view>
 
