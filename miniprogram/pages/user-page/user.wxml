@@ -8,14 +8,16 @@
   </view>
 
   <!-- 储值卡 -->
-  <view class="card">
+  <view class="item">
+    <image class="item-icon" src=""></image>
     <navigator url="../card/card" hover-class="navigator-hover">
       <view class="card-name">储值卡</view>
     </navigator>
   </view>
 
   <!-- 消息提醒 -->
-  <view class="message">
+  <view class="item">
+    <image class="item-icon" src=""></image>
     <navigator url="../message/message" hover-class="navigator-hover">
       <view class="message-name">消息提醒</view>
     </navigator>

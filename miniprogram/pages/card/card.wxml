@@ -1,2 +1,27 @@
 <!--pages/card/card.wxml-->
-<text>pages/card/card.wxml</text>
+<view class="container">
+  <view class="card-main">
+    <view class="card-main-balance">
+      剩余积分：{{balance}}
+    </view>
+  </view>
+
+  <view class="card-record">
+    <view wx:for="{{records}}" class="card-record-item">
+      <block class="card-record-item-index">
+        {{index + 1}}
+      </block>
+      <block class="card-record-item-event">
+        {{item.event}}
+      </block>
+      <block wx:if="{{item.type == 0}}">
+        +{{item.value}}
+      </block>
+      <block wx:elif="{{item.type == 1}}">
+        -{{item.value}}
+      </block>
+
+    </view>
+  </view>
+
+</view>

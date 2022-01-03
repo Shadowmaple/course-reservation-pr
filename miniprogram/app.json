@@ -16,15 +16,23 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#25BFFF",
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "首页"
+      "text": "首页",
+      "iconPath": "",
+      "selectedIconPath": ""
     }, {
       "pagePath": "pages/reserve/reserve",
-      "text": "预约"
+      "text": "预约",
+      "iconPath": "",
+      "selectedIconPath": ""
     }, {
       "pagePath": "pages/user-page/user",
-      "text": "我的"
+      "text": "我的",
+      "iconPath": "",
+      "selectedIconPath": ""
     }]
   },
   "sitemapLocation": "sitemap.json",
