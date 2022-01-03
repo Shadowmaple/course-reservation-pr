@@ -2,8 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/user-page/user",
-    "pages/reserve/reserve"
+    "pages/reserve/reserve",
+    "pages/course/info",
+    "pages/message/message",
+    "pages/card/card"
   ],
+  "entryPagePath": "pages/index/index",
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",

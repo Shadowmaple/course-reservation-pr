@@ -1,42 +1,29 @@
 <!--index.wxml-->
 <view class="container">
 
-<!-- 用户 openid -->
-<view class="userinfo">
-  <block wx:if="{{canIUseOpenData}}" class="userinfo-opendata">
-    <view class="userinfo-block-avatar" bindtap="bindViewTap">
-      <open-data type="userAvatarUrl"></open-data>
-    </view>
-  </block>
-  <block wx:elif="{{!hasUserInfo}}">
-    <!-- <button 
-      wx:if="{{canIUseGetUserProfile}}" 
-      bindtap="getUserProfile"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button> -->
-    <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
-  </block>
-  <block wx:else>
-    <image bindtap="bindViewTap" class="userinfo-block-avatar" src="{{avatarUrl}}" mode="cover"></image>
-  </block>
-  <view class="userinfo-nickname">{{nickName}}</view>
-  <!-- <view class="userinfo-nickname-wrapper">
-    <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-  </view> -->
-</view>
-
-
-<!-- 上传图片 -->
-<!-- <view class="uploader">
-  <view class="uploader-text" bindtap="doUpload">
-    <text>上传图片</text>
+  <!-- 用户 -->
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo}}">
+      <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-block-avatar" src="{{avatarUrl}}" mode="cover"></image>
+    </block>
+    <view class="userinfo-nickname">{{nickName}}</view>
   </view>
-  <view class="uploader-container" wx:if="{{imgUrl}}">
-    <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-  </view>
-</view> -->
 
+  <!-- 储值卡 -->
+  <view class="card">
+    <navigator url="../card/card" hover-class="navigator-hover">
+      <view class="card-name">储值卡</view>
+    </navigator>
+  </view>
+
+  <!-- 消息提醒 -->
+  <view class="message">
+    <navigator url="../message/message" hover-class="navigator-hover">
+      <view class="message-name">消息提醒</view>
+    </navigator>
+  </view>
 
 </view>

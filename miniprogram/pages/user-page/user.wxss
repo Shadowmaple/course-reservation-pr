@@ -7,7 +7,7 @@ page {
   justify-content: flex-start;
 }
 
-.userinfo, .uploader, .tunnel {
+.userinfo, .uploader, .card, .message {
   margin-top: 40rpx;
   height: 140rpx;
   width: 100%;
@@ -46,14 +46,13 @@ page {
   width: 100rpx;
 }
 
-
 .userinfo-avatar:after {
   border: none;
 }
 
 .userinfo-nickname {
-  font-size: 32rpx;
-  color: #007aff;
+  font-size: 50rpx;
+  color: black;
   background-color: white;
   background-size: cover;
   text-align: left;
@@ -69,7 +68,7 @@ page {
   flex: 1;
 }
 
-.uploader, .tunnel {
+.uploader {
   height: auto;
   padding: 0 0 0 40rpx;
   flex-direction: column;
@@ -77,59 +76,18 @@ page {
   box-sizing: border-box;
 }
 
-.uploader-text, .tunnel-text {
+.uploader-text {
   width: 100%;
   line-height: 52px;
   font-size: 34rpx;
   color: #007aff;
 }
 
-.uploader-container {
-  width: 100%;
-  height: 400rpx;
-  padding: 20rpx 20rpx 20rpx 0;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.uploader-image {
-  width: 100%;
-  height: 360rpx;
-}
-
-.tunnel {
-  padding: 0 0 0 40rpx;
-}
-
-.tunnel-text {
-  position: relative;
-  color: #222;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.tunnel-text:first-child {
-  border-top: none;
-}
-
-.tunnel-switch {
-  position: absolute;
-  right: 20rpx;
-  top: -2rpx;
-}
-
-.disable {
+/* .disable {
   color: #888;
-}
+} */
 
-.service {
+/* .service {
   position: fixed;
   right: 40rpx;
   bottom: 40rpx;
@@ -142,20 +100,30 @@ page {
   align-content: center;
   justify-content: center;
   transition: all 300ms ease;
-}
-
+} */
+/* 
 .service-button {
   position: absolute;
   top: 40rpx;
-}
+} */
 
-.service:active {
+/* .service:active {
   box-shadow: none;
-}
+} */
 
-.request-text {
+/* .request-text {
   padding: 20rpx 0;
   font-size: 24rpx;
   line-height: 36rpx;
   word-break: break-all;
+} */
+
+.message-name, .card-name {
+  font-size: 40rpx;
+  color: black;
+  background-color: white;
+  background-size: cover;
+  text-align: left;
+  padding-left: 0;
+  margin-left: 10px;
 }

@@ -4,6 +4,13 @@ App({
     token: "",
     userInfo: {},
     hasUserInfo: false,
+    apiHost: "http://127.0.0.1:8080",
+    apiPath : {
+      loginPath: "/login",
+      courseListPath: "/course/list",
+      courseInfoPath: "/course/info",
+      userInfoPath: "/user/info",
+    }
   },
 
   // 监听小程序启动
@@ -76,7 +83,7 @@ App({
           return
         }
         wx.request({
-          url: 'http://127.0.0.1:8080/login',
+          url: this.globalData.apiHost + this.globalData.apiPath.loginPath,
           method: 'post',
           data: {
             code: res.code

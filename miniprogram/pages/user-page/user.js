@@ -7,7 +7,6 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     nickName: "未登录",
-    requestResult: '',
     // canIUseGetUserProfile: true,
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') // 如需尝试获取用户信息可改为false
   },
@@ -32,10 +31,6 @@ Page({
       })
     }
   },
-
-  // getUserProfile() {
-  //   app.getUserInfo()
-  // },
 
 /*
   getUserProfile() {

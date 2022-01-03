@@ -1,4 +1,10 @@
 <view class="container">
+  <view class="search">
+    <icon type="search" color="lightblue" size="20"></icon>
+    <input class="search-text" type="text" value="输入课程名">
+    </input>
+  </view>
+
   <view class="{{msgColor}}" bindtap="clickMsg">
     Hello world!
   </view>
