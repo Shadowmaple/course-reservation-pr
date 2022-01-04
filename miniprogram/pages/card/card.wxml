@@ -6,21 +6,27 @@
     </view>
   </view>
 
-  <view class="card-record">
-    <view wx:for="{{records}}" class="card-record-item">
-      <block class="card-record-item-index">
-        {{index + 1}}
-      </block>
-      <block class="card-record-item-event">
-        {{item.event}}
-      </block>
-      <block wx:if="{{item.type == 0}}">
-        +{{item.value}}
-      </block>
-      <block wx:elif="{{item.type == 1}}">
-        -{{item.value}}
-      </block>
+  <view>
+    收支记录
+  </view>
 
+  <view class="card-record">
+    <view wx:for="{{records}}" wx:key="*this" class="card-record-item">
+      <view class="card-record-item-index">{{index + 1}}</view>
+      <view class="card-record-item-content">
+        <vew class="card-record-item-time">{{item.time}}</vew>
+        <view class="card-record-item-event">{{item.event}}</view>  
+      </view>
+      
+
+      <view class="card-record-item-value-box">
+        <block wx:if="{{item.type == 0}}">
+          <text class="card-record-item-value">+{{item.value}}</text>
+        </block>
+        <block wx:elif="{{item.type == 1}}">
+          <text class="card-record-item-value">-{{item.value}}</text>
+        </block>
+      </view>
     </view>
   </view>
 

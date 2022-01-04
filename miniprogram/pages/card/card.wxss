@@ -1,11 +1,84 @@
 /* pages/card/card.wxss */
 
 page {
+  background: #f6f6f6;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+}
+
+.card-main {
+  margin-top: 40rpx;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 300rpx;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 300ms ease;
+}
+
+.card-main-balance {
+  font-size: 50rpx;
+  color: black;
+  background-size: cover;
+  background-color: lightblue;
+  text-align: center;
+  padding: 20rpx;
 }
 
 .card-record {
-  background-color: lightblue;
+  /* background: #f6f6f6; */
+  background: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+  height: auto;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-record-item {
+  background-color: rgb(100, 200, 255);
+  margin: 20rpx;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100rpx;
+  font-size: 100%;
+}
+
+.card-record-item-index {
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 2rpx 15rpx;
+  border: 5rpx solid yellow;
+  border-radius: 50%;
+}
+
+.card-record-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+}
+
+.card-record-item-value-box {
+  width: auto;
+  flex-grow: 1;
+  text-align: right;
+  margin-right: 20rpx;
+}
+
+.card-record-item-value {
+  color: #f6f6f6;
+  font-size: 50rpx;
 }

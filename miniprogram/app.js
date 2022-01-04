@@ -10,6 +10,7 @@ App({
       courseListPath: "/course/list",
       courseInfoPath: "/course/info",
       userInfoPath: "/user/info",
+      cardInfoPath: "/card/info",
     }
   },
 
