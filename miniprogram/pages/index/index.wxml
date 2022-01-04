@@ -7,7 +7,7 @@
   </view>
   <view class="course" bindtap="click_course">
     <image class="img_course" src="/../../images/user-unlogin.png"></image>
-    <navigator url="../course/info" hover-class="navigator-hover">
+    <navigator url="{{url}}" hover-class="navigator-hover">
       <view class="message_course">
         <view style="color: blue;">{{course}}</view>
         <view>{{teacher}}</view>
