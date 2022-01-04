@@ -1,12 +1,18 @@
 <view class="container">
   <view class="search">
-    <icon type="search" color="lightblue" size="20"></icon>
-    <input class="search-text" type="text" value="输入课程名">
+    <icon class="search_icon" type="search" color="lightblue" size="20"></icon>
+    <input class="search-text" type="text" value="输入课程名" confirm-type="search">
     </input>
+    <icon type="cancel" color="lightblue" size="20"></icon>
   </view>
-
-  <view class="{{msgColor}}" bindtap="clickMsg">
-    Hello world!
+  <view class="course" bindtap="click_course">
+    <image class="img_course" src="/../../images/user-unlogin.png"></image>
+    <navigator url="../course/info" hover-class="navigator-hover">
+      <view class="message_course">
+        <view style="color: blue;">{{course}}</view>
+        <view>{{teacher}}</view>
+        <view>{{date}}</view>
+      </view>
+    </navigator>
   </view>
-
 </view>

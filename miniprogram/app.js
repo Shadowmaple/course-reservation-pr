@@ -1,7 +1,7 @@
 // app.js
 App({
   globalData: {
-    token: "",
+    token: "hjk",
     userInfo: {},
     hasUserInfo: false,
     apiHost: "http://127.0.0.1:8080",

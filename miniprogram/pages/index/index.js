@@ -2,26 +2,30 @@
 
 // 获取应用实例
 const app = getApp();
-var flag = true;
 
 Page({
   data: {
-    msgColor: "msg-blue",
+    course: "高等数学",
+    teacher: "李永乐",
+    date: "2022-1-1 ~ 2022-2-2"
   },
 
-  clickMsg: function() {
-    console.log("click msg");
-    console.log("change msg's color");
-    var color = this.data.msgColor;
-    console.log(color);
-    if (flag) {
-      color = "msg-red";
-      flag = false;
-    } else {
-      color = "msg-blue";
-      flag = true;
-    }
-    this.setData({msgColor: color});
+  click_course: function () {
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.courseListPath,
+      method: "post",
+      success: res => {
+        this.data.course = "",
+        this.setData({
+          course:res.data.data.list.course_name,
+          teacher:res.data.data.list.teacher_name,
+          date:res.data.data.list.start_time + "~" + res.data.data.list.end_time
+        })
+      },
+      fail: res => {
+        console.log('request login url failed: ', res)
+      },
+    })
   },
 
   /**
