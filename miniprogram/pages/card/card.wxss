@@ -79,3 +79,8 @@ page {
   color: #f6f6f6;
   font-size: 50rpx;
 }
+
+.foot-msg {
+  margin: 10rpx 0;
+  font-size: 25rpx;
+}

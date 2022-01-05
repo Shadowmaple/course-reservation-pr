@@ -15,9 +15,9 @@
       <view class="card-record-item-index">{{index + 1}}</view>
       <view class="card-record-item-content">
         <vew class="card-record-item-time">{{item.time}}</vew>
-        <view class="card-record-item-event">{{item.event}}</view>  
+        <view class="card-record-item-event">{{item.event}}</view>
       </view>
-      
+
 
       <view class="card-record-item-value-box">
         <block wx:if="{{item.type == 0}}">
@@ -29,5 +29,7 @@
       </view>
     </view>
   </view>
+
+  <view class="foot-msg">------------ 没有更多记录啦 ------------</view>
 
 </view>

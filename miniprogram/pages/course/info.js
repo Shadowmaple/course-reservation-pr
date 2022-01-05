@@ -9,7 +9,7 @@ Page({
       courseID: 233,
       courseName: "操作系统",
       teacher: "王富贵",
-      courseDesc: "这个课程很懒，什么都没写~",
+      courseDesc: "这个课程很懒，什么都没写~红红火火恍恍惚惚或或或或或或或或或或或或或或或或或或或或或或或或或或或或",
       total: 100,
       currentNum: 20,
       commentNum: 2,

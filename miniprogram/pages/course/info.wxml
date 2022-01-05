@@ -4,38 +4,54 @@
   <!-- 课程详情 -->
 
   <view class="course-image-box">
-    <image src="{{courseInfo.image}}" class="course-image"></image>
+    <image src="{{courseInfo.image}}" class="course-image" mode="scaleToFill"></image>
   </view>
 
   <view class="courseInfo-box">
     <view class="courseInfo-courseName">{{courseInfo.courseName}}</view>
-    <view class="courseInfo-detail">
-      <view class="courseInfo-teacher">{{courseInfo.teacher}}</view>
-      <view class="courseInfo-desc">{{courseInfo.courseDesc}}</view>
-      <view>
-        开课时间：{{courseInfo.startTime}}~{{courseInfo.endTime}}
-      </view>
-      <view>
-        预约人数：<span>{{courseInfo.currentNum}}/{{courseInfo.total}}</span>
-      </view>
-      <view class="courseInfo-status">
-        课程状态：
-        <block wx:if="{{courseInfo.status == 0}}">可预约</block>
-        <block wx:elif="{{courseInfo.status == 1}}">已开课</block>
-        <block wx:else>已结束</block>
-      </view>
-      <view>课时：{{courseInfo.period}}</view>
-      <view>所需积分：{{courseInfo.price}}</view>
+    <view class="courseInfo-teacher">老师：{{courseInfo.teacher}}</view>
+    <view class="courseInfo-period">课时：{{courseInfo.period}}</view>
+    <view class="courseInfo-time">
+      开课时间：{{courseInfo.startTime}}~{{courseInfo.endTime}}
+    </view>
 
-      <button class="reversed-button" type="primary">
+    <view class="courseInfo-desc">课程简介：{{courseInfo.courseDesc}}</view>
+
+    <view class="courseInfo-price">所需积分：{{courseInfo.price}}</view>
+    <view class="courseInfo-num">
+      预约人数：<span>{{courseInfo.currentNum}} / {{courseInfo.total}}</span>
+    </view>
+
+    <!-- 预约按钮 -->
+    <block wx:if="{{courseInfo.status == 0}}">
+      <button class="reversed-button">
         <block wx:if="{{courseInfo.hasReversed}}">预约</block>
         <block wx:else>取消预约</block>
       </button>
+    </block>
+    <block wx:elif="{{courseInfo.status == 1}}">
+      <button class="reversed-button" disabled="disabled">已开课</button>
+    </block>
+    <block wx:else>
+      <button class="reversed-button" disabled="disabled">课程已结束</button>
+    </block>
 
+  </view>
+
+
+  <!-- 评论 -->
+
+  <!-- 发布评论 -->
+  <view class="comment-publish">
+    <vew style="padding-left: 10rpx;">发布评论（限100字）：</vew>
+    <view class="comment-publish-body">
+      <input class="comment-publish-input" type="text" maxlength="100" confirm-type="send" value="有什么想说的呢？" />
+      <button class="comment-publish-button">发送</button>
     </view>
   </view>
 
-  <!-- 评论 -->
+  <!-- 评论列表 -->
+  <view class="comment-divider">---------- 最新评论 -----------</view>
 
   <view class="comment-box">
     <block wx:for="{{commentList}}" wx:key="*this">
