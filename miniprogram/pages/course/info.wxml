@@ -1,2 +1,74 @@
 <!--pages/course/info.wxml-->
-<text>pages/course/info.wxml</text>
+
+<view class="container">
+  <!-- 课程详情 -->
+
+  <view class="course-image-box">
+    <image src="{{courseInfo.image}}" class="course-image"></image>
+  </view>
+
+  <view class="courseInfo-box">
+    <view class="courseInfo-courseName">{{courseInfo.courseName}}</view>
+    <view class="courseInfo-detail">
+      <view class="courseInfo-teacher">{{courseInfo.teacher}}</view>
+      <view class="courseInfo-desc">{{courseInfo.courseDesc}}</view>
+      <view>
+        开课时间：{{courseInfo.startTime}}~{{courseInfo.endTime}}
+      </view>
+      <view>
+        预约人数：<span>{{courseInfo.currentNum}}/{{courseInfo.total}}</span>
+      </view>
+      <view class="courseInfo-status">
+        课程状态：
+        <block wx:if="{{courseInfo.status == 0}}">可预约</block>
+        <block wx:elif="{{courseInfo.status == 1}}">已开课</block>
+        <block wx:else>已结束</block>
+      </view>
+      <view>课时：{{courseInfo.period}}</view>
+      <view>所需积分：{{courseInfo.price}}</view>
+
+      <button class="reversed-button" type="primary">
+        <block wx:if="{{courseInfo.hasReversed}}">预约</block>
+        <block wx:else>取消预约</block>
+      </button>
+
+    </view>
+  </view>
+
+  <!-- 评论 -->
+
+  <view class="comment-box">
+    <block wx:for="{{commentList}}" wx:key="*this">
+      <view class="comment-item">
+        <!-- 第一行 基本信息 -->
+        <view class="comment-line1">
+          <image src="{{item.userAvatar}}" class="comment-userAvatar"></image>
+          <vew class="comment-meta">
+            <view class="comment-userNickname">{{item.userNickname}}</view>
+            <view class="comment-time">{{item.time}}</view>
+          </vew>
+        </view>
+
+        <!-- 第二行 评论内容 -->
+        <view class="comment-line2">
+          <view class="comment-content" user-select="true">
+            {{item.content}}
+          </view>
+        </view>
+
+        <!-- 第三行 点赞图标 -->
+        <view class="comment-line3">
+          <!-- 应放icon -->
+          <block wx:if="{{item.hasLiked}}">
+            <image src="../../images/thumb-up-fill.png" class="like-icon"></image>
+          </block>
+          <block wx:else>
+            <image src="../../images/thumb-up-line.png" class="like-icon"></image>
+          </block>
+          <view class="like-num">{{item.likeNum}}</view>
+        </view>
+
+      </view>
+    </block>
+  </view>
+</view>

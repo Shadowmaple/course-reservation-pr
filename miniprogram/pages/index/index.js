@@ -7,7 +7,9 @@ Page({
   data: {
     course: "高等数学",
     teacher: "李永乐",
-    date: "2022-1-1 ~ 2022-2-2"
+    date: "2022-1-1 ~ 2022-2-2",
+    course_id:"233",
+    url:"../course/info?course_id=122"
   },
 
   click_course: function () {

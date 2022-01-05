@@ -1,1 +1,84 @@
 /* pages/course/info.wxss */
+
+/* courseInfo css */
+
+.courseInfo-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* comment css */
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color:  rgb(143, 223, 226);
+  padding: 20rpx;
+  width: 85%;
+  margin-top: 20rpx;
+  border: 2rpx solid rgb(182, 179, 179);
+}
+
+.comment-item {
+  background-color: rgb(174, 205, 238);
+  padding: 10rpx;
+  border: 2rpx solid rgb(124, 122, 122);
+  border-radius: 20rpx;
+  margin: 10rpx 0;
+}
+
+.comment-line1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.comment-userAvatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx 10rpx;
+}
+
+.comment-meta {
+  width: auto;
+  margin: 10rpx 20rpx;
+}
+
+.comment-userNickname {
+  font-size: 35rpx;
+  margin-bottom: 5rpx;
+}
+
+.comment-time {
+  font-size: 30rpx;
+}
+
+.comment-line2 {
+  text-align: left;
+  padding: 10rpx 20rpx;
+}
+
+.comment-content {
+  width: 100%;
+  display: block;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.like-icon {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 10rpx;
+}
+
+.comment-line3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 5rpx 20rpx;
+}

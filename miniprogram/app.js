@@ -1,7 +1,7 @@
 // app.js
 App({
   globalData: {
-    token: "hjk",
+    token: "",
     userInfo: {},
     hasUserInfo: false,
     apiHost: "http://127.0.0.1:8080",
@@ -11,6 +11,7 @@ App({
       courseInfoPath: "/course/info",
       userInfoPath: "/user/info",
       cardInfoPath: "/card/info",
+      commentListPath: "/comment/list",
     }
   },
 
