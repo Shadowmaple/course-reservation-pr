@@ -1,10 +1,13 @@
 // pages/course/info.js
 
 const app = getApp()
+const DefaultSize = 20
 
 Page({
   data: {
     hasData: true,
+    courseID: 0,
+    currentPage: 0,
     courseInfo: {
       courseID: 233,
       courseName: "操作系统",
@@ -29,7 +32,7 @@ Page({
       userAvatar: "../../images/user-unlogin.png",
       likeNum: 5, // 点赞数量
       hasLiked: true, // 该用户是否已点赞
-    },{
+    }, {
       id: 2, // 评论id
       content: "这个用户很懒，什么都没评论~送到房间辣ddddddddddddddddddddddddddddddddddddddddd撒旦法",
       time: "2020-02-02 12:02",
@@ -50,7 +53,11 @@ Page({
     }
     var courseID = options.course_id
     this.requestCourseInfo(courseID)
-    this.requestCommentList(courseID)
+    this.requestCommentList(courseID, DefaultSize, 0)
+    this.setData({
+      courseID: courseID,
+      currentPage: 1,
+    })
   },
 
   // 请求课程详情API
@@ -94,7 +101,7 @@ Page({
   },
 
   // 请求评论API
-  requestCommentList: function (courseID) {
+  requestCommentList: function (courseID, size, page) {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.commentListPath,
       method: 'GET',
@@ -103,8 +110,8 @@ Page({
       },
       data: {
         course_id: courseID,
-        size: 20,
-        page: 0,
+        size: size,
+        page: page,
       },
       success: res => {
         var list = new Array
@@ -131,13 +138,29 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    if (this.data.courseID == 0) {
+      console.log('refresh failed: courseID is empty.')
+      return
+    }
+    this.requestCourseInfo(courseID)
+    this.requestCommentList(courseID, DefaultSize, 0)
+    this.setData({
+      currentPage: 0,
+    })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.courseID == 0) {
+      console.log('refresh failed: courseID is empty.')
+      return
+    }
+    // 下拉获取新的列表
+    this.requestCommentList(courseID, DefaultSize, this.data.currentPage)
+    this.setData({
+      currentPage: this.data.currentPage + 1,
+    })
   },
 })
