@@ -21,18 +21,18 @@
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页",
-      "iconPath": "",
-      "selectedIconPath": ""
+      "iconPath": "./images/home-3-line.png",
+      "selectedIconPath": "./images/home-3-fill.png"
     }, {
       "pagePath": "pages/reserve/reserve",
       "text": "预约",
-      "iconPath": "",
-      "selectedIconPath": ""
+      "iconPath": "./images/book-2-line.png",
+      "selectedIconPath": "./images/book-2-fill.png"
     }, {
       "pagePath": "pages/user-page/user",
       "text": "我的",
-      "iconPath": "",
-      "selectedIconPath": ""
+      "iconPath": "./images/user-line.png",
+      "selectedIconPath": "./images/user-fill.png"
     }]
   },
   "sitemapLocation": "sitemap.json",

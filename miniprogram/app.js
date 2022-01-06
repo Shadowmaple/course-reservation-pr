@@ -12,6 +12,9 @@ App({
       userInfoPath: "/user/info",
       cardInfoPath: "/card/info",
       commentListPath: "/comment/list",
+      reverseCoursePath: "/course/reverse",
+      commentPublishPath: "/comment",
+      commentLikePath: "/comment/like",
     }
   },
 

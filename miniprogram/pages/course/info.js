@@ -8,6 +8,7 @@ Page({
     hasData: true,
     courseID: 0,
     currentPage: 0,
+    inputCommentValue: "",
     courseInfo: {
       courseID: 233,
       courseName: "操作系统",
@@ -47,6 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('info-page onLoad options: ', options)
     if (!options.course_id) {
       console.error('no course_id: ', options)
       return
@@ -134,6 +136,161 @@ Page({
     })
   },
 
+  // 请求预约/取消预约API
+  requestReversedAPI: function (hasReversed = Boolean) {
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.reverseCoursePath,
+      method: 'POST',
+      header: {
+        token: app.globalData.token,
+      },
+      data: {
+        'course_id': this.data.courseID,
+        'has_reversed': hasReversed, // 期望更改的状态
+      },
+      success: res => {
+        console.log('request reverse API ok: ', res)
+        var resp = res.data
+        if (resp.code != 0) {
+          console.warn('request reverse API error:', resp.code, resp.msg)
+          return
+        }
+        var courseInfo = this.data.courseInfo
+        courseInfo.hasReserved = resp.data.has_reversed
+        this.setData({
+          courseInfo: courseInfo,
+        })
+      },
+      fail: res => {
+        console.error('request reverse API error: ', res)
+      },
+    })
+  },
+
+  // 请求发布/修改评论API
+  // commentID=0为发布新评论，否则为修改原评论
+  requestCommentPublish: function (content = String, commentID = Number) {
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.commentPublishPath,
+      method: 'POST',
+      header: {
+        token: app.globalData.token,
+      },
+      data: {
+        'course_id': this.data.courseID,
+        'id': commentID,
+        'content': content,
+      },
+      success: res => {
+        console.log('request comment publish API ok: ', res)
+        var resp = res.data
+        if (resp.code != 0) {
+          console.warn('request comment publish API error:', resp.code, resp.msg)
+          return
+        }
+        // commentID不为0需要修改评论展示内容，发布新评论暂时先不考虑
+        if (commentID == 0) {
+          return
+        }
+        var commentList = this.data.commentList
+        // 查找目标评论
+        var index = 0
+        for (; index < commentList.length(); index++) {
+          if (commentList[index].id == commentID) {
+            break
+          }
+        }
+        if (index >= commentList.length()) {
+          return
+        }
+        commentList[index].content = content
+        this.setData({
+          commentList: commentList,
+        })
+      },
+      fail: res => {
+        console.error('request comment publish API error: ', res)
+      },
+    })
+  },
+
+  // 点击预约/取消预约
+  clickReverseCourse: function (event) {
+    console.log('clickReverseCourse event:', event)
+    var expectReversed = event.currentTarget.dataset.hasReserved // 期望更改的预约状态
+
+    this.requestReversedAPI(expectReversed)
+  },
+
+  // 在评论框中输入内容触发的事件
+  inputCommentCentent: function (event) {
+    this.data.inputCommentValue = event.detail.value
+  },
+
+  // 点击发送评论（input组件中输入键盘上确认按钮）
+  clickPublishCommentForInput: function(event) {
+    var content = event.detail.value
+    console.log('clickPublishCommentForInput content: ', content)
+    if (content === "") {
+      return
+    }
+    this.requestCommentPublish(content, 0)
+  },
+
+  // 点击发送评论（自定义发送按钮）
+  clickPublishComment: function (event) {
+    var content = this.data.inputCommentValue
+    console.log('clickPublishComment content: ', content)
+    if (content === "") {
+      return
+    }
+    this.requestCommentPublish(content, 0)
+  },
+
+  // 点击修改评论
+  // todo
+  clickUpdateComment: function (event) {},
+
+  // 点击点赞/取消点赞
+  clickLike: function (event) {
+    console.log('clickLike event:', event)
+    var expectLiked = !event.currentTarget.dataset.hasLiked // 期望更改的点赞状态
+    var id = event.currentTarget.dataset.id
+    var index = event.currentTarget.dataset.index
+
+    // 请求点赞API
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.commentLikePath,
+      method: 'POST',
+      header: {
+        token: app.globalData.token,
+      },
+      data: {
+        id: id,
+        hasLiked: expectLiked,
+      },
+      success: res => {
+        var resp = res.data
+        if (resp.code != 0) {
+          console.warn('request commentLike API error:', resp.code, resp.msg)
+          return
+        }
+        var commentList = this.data.commentList
+        if (commentList.length() <= index) {
+          console.error('commentLike click error: index!=length: ', index, commentList.length())
+          return
+        }
+        commentList[index].hasLiked = resp.has_liked
+        this.setData({
+          commentList: commentList,
+        })
+      },
+      fail: res => {
+        console.error('request commentLike API error: ', res)
+      },
+    })
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -158,7 +315,7 @@ Page({
       return
     }
     // 下拉获取新的列表
-    this.requestCommentList(courseID, DefaultSize, this.data.currentPage)
+    this.requestCommentList(this.data.courseID, DefaultSize, this.data.currentPage)
     this.setData({
       currentPage: this.data.currentPage + 1,
     })

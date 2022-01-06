@@ -24,7 +24,7 @@
 
     <!-- 预约按钮 -->
     <block wx:if="{{courseInfo.status == 0}}">
-      <button class="reversed-button">
+      <button class="reversed-button" catchtap="clickReverseCourse" data-has-reversed="{{courseInfo.hasReversed}}">
         <block wx:if="{{courseInfo.hasReversed}}">预约</block>
         <block wx:else>取消预约</block>
       </button>
@@ -45,8 +45,8 @@
   <view class="comment-publish">
     <vew style="padding-left: 10rpx;">发布评论（限100字）：</vew>
     <view class="comment-publish-body">
-      <input class="comment-publish-input" type="text" maxlength="100" confirm-type="send" value="有什么想说的呢？" />
-      <button class="comment-publish-button">发送</button>
+      <input class="comment-publish-input" type="text" maxlength="100" confirm-type="send" placeholder="有什么想说的呢？" auto-focus bindinput="clickPublishComment" bindconfirm="clickPublishCommentForInput" />
+      <button class="comment-publish-button" bindtap="clickPublishComment">发送</button>
     </view>
   </view>
 
@@ -56,6 +56,7 @@
   <view class="comment-box">
     <block wx:for="{{commentList}}" wx:key="*this">
       <view class="comment-item">
+
         <!-- 第一行 基本信息 -->
         <view class="comment-line1">
           <image src="{{item.userAvatar}}" class="comment-userAvatar"></image>
@@ -74,17 +75,18 @@
 
         <!-- 第三行 点赞图标 -->
         <view class="comment-line3">
-          <!-- 应放icon -->
           <block wx:if="{{item.hasLiked}}">
-            <image src="../../images/thumb-up-fill.png" class="like-icon"></image>
+            <image src="../../images/thumb-up-fill.png" class="like-icon" catchtap="clickLike" data-has-liked="{{item.hasLiked}}" data-id="{{item.id}}" data-index="{{index}}"></image>
           </block>
           <block wx:else>
-            <image src="../../images/thumb-up-line.png" class="like-icon"></image>
+            <image src="../../images/thumb-up-line.png" class="like-icon" catchtap="clickLike" data-has-liked="{{item.hasLiked}}" data-id="{{item.id}}"></image>
           </block>
           <view class="like-num">{{item.likeNum}}</view>
+
         </view>
 
       </view>
     </block>
   </view>
+
 </view>
