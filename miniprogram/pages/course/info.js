@@ -2,6 +2,7 @@
 
 const app = getApp()
 const DefaultSize = 20
+const DefaultUserAvatar = "../../images/user-unlogin.svg"
 
 Page({
   data: {
@@ -30,7 +31,7 @@ Page({
       content: "这个用户很懒，什么都没评论~",
       time: "2020-02-02 12:02",
       userNickname: "有影子的猫hey",
-      userAvatar: "../../images/user-unlogin.png",
+      userAvatar: "../../images/user-unlogin.svg",
       likeNum: 5, // 点赞数量
       hasLiked: true, // 该用户是否已点赞
     }, {
@@ -38,7 +39,7 @@ Page({
       content: "这个用户很懒，什么都没评论~送到房间辣ddddddddddddddddddddddddddddddddddddddddd撒旦法",
       time: "2020-02-02 12:02",
       userNickname: "有影子的猫hey",
-      userAvatar: "../../images/user-unlogin.png",
+      userAvatar: "../../images/user-unlogin.svg",
       likeNum: 5, // 点赞数量
       hasLiked: false, // 该用户是否已点赞
     }],
