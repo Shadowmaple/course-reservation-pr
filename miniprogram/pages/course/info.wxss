@@ -47,7 +47,7 @@
 }
 
 /* 预约/取消预约button */
-.reversed-button {
+.reserved-button {
   background-color: rgb(0, 153, 255);
   color: white;
   border-radius: 12%;

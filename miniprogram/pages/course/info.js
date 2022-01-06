@@ -48,12 +48,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('info-page onLoad options: ', options)
-    if (!options.course_id) {
-      console.error('no course_id: ', options)
+    var courseID = options.course_id
+    if (!courseID || courseID <= 0) {
+      console.error('no course_id or is error: ', options)
       return
     }
-    var courseID = options.course_id
     this.requestCourseInfo(courseID)
     this.requestCommentList(courseID, DefaultSize, 0)
     this.setData({
@@ -137,32 +136,32 @@ Page({
   },
 
   // 请求预约/取消预约API
-  requestReversedAPI: function (hasReversed = Boolean) {
+  requestReservedAPI: function (hasReserved = Boolean) {
     wx.request({
-      url: app.globalData.apiHost + app.globalData.apiPath.reverseCoursePath,
+      url: app.globalData.apiHost + app.globalData.apiPath.reserveCoursePath,
       method: 'POST',
       header: {
         token: app.globalData.token,
       },
       data: {
         'course_id': this.data.courseID,
-        'has_reversed': hasReversed, // 期望更改的状态
+        'has_reserved': hasReserved, // 期望更改的状态
       },
       success: res => {
-        console.log('request reverse API ok: ', res)
+        console.log('request reserve API ok: ', res)
         var resp = res.data
         if (resp.code != 0) {
-          console.warn('request reverse API error:', resp.code, resp.msg)
+          console.warn('request reserve API error:', resp.code, resp.msg)
           return
         }
         var courseInfo = this.data.courseInfo
-        courseInfo.hasReserved = resp.data.has_reversed
+        courseInfo.hasReserved = resp.data.has_reserved
         this.setData({
           courseInfo: courseInfo,
         })
       },
       fail: res => {
-        console.error('request reverse API error: ', res)
+        console.error('request reserve API error: ', res)
       },
     })
   },
@@ -215,11 +214,11 @@ Page({
   },
 
   // 点击预约/取消预约
-  clickReverseCourse: function (event) {
-    console.log('clickReverseCourse event:', event)
-    var expectReversed = event.currentTarget.dataset.hasReserved // 期望更改的预约状态
+  clickReserveCourse: function (event) {
+    console.log('clickReserveCourse event:', event)
+    var expectRserved = !event.currentTarget.dataset.hasReserved // 期望更改的预约状态
 
-    this.requestReversedAPI(expectReversed)
+    this.requestReservedAPI(expectRserved)
   },
 
   // 在评论框中输入内容触发的事件

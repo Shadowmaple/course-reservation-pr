@@ -12,7 +12,7 @@ App({
       userInfoPath: "/user/info",
       cardInfoPath: "/card/info",
       commentListPath: "/comment/list",
-      reverseCoursePath: "/course/reverse",
+      reserveCoursePath: "/course/reserve",
       commentPublishPath: "/comment",
       commentLikePath: "/comment/like",
     }

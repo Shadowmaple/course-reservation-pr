@@ -24,16 +24,16 @@
 
     <!-- 预约按钮 -->
     <block wx:if="{{courseInfo.status == 0}}">
-      <button class="reversed-button" catchtap="clickReverseCourse" data-has-reversed="{{courseInfo.hasReversed}}">
-        <block wx:if="{{courseInfo.hasReversed}}">预约</block>
+      <button class="reserved-button" catchtap="clickReserveCourse" data-has-reserved="{{courseInfo.hasReserved}}">
+        <block wx:if="{{courseInfo.hasReserved}}">预约</block>
         <block wx:else>取消预约</block>
       </button>
     </block>
     <block wx:elif="{{courseInfo.status == 1}}">
-      <button class="reversed-button" disabled="disabled">已开课</button>
+      <button class="reserved-button" disabled="disabled">已开课</button>
     </block>
     <block wx:else>
-      <button class="reversed-button" disabled="disabled">课程已结束</button>
+      <button class="reserved-button" disabled="disabled">课程已结束</button>
     </block>
 
   </view>
@@ -79,10 +79,9 @@
             <image src="../../images/thumb-up-fill.png" class="like-icon" catchtap="clickLike" data-has-liked="{{item.hasLiked}}" data-id="{{item.id}}" data-index="{{index}}"></image>
           </block>
           <block wx:else>
-            <image src="../../images/thumb-up-line.png" class="like-icon" catchtap="clickLike" data-has-liked="{{item.hasLiked}}" data-id="{{item.id}}"></image>
+            <image src="../../images/thumb-up-line.png" class="like-icon" catchtap="clickLike" data-has-liked="{{item.hasLiked}}" data-id="{{item.id}}" data-index="{{index}}"></image>
           </block>
           <view class="like-num">{{item.likeNum}}</view>
-
         </view>
 
       </view>
