@@ -26,29 +26,48 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.requestCardData()
+    this.requestCardData(true)
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.requestCardData()
+    this.requestCardData(true)
   },
 
-  requestCardData: function () {
+  onReachBottom: function() {
+    this.requestCardData(false)
+  },
+
+  // 请求储值卡信息API
+  requestCardData: function (refresh = Boolean) {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.cardInfoPath,
-      method: 'get',
+      method: 'GET',
       header: {
-        'token': app.globalData.token,
+        token: app.globalData.token,
       },
       success: res => {
-        // todo
+        var resp = res.data
+        if (resp.code != 0) {
+          console.warn('request cardInfo failed failed:', resp)
+          return
+        }
+
+        var list = this.data.records
+        var balance = this.data.balance
+        if (refresh) {
+          list = resp.data.records
+          balance = resp.data.balance
+        } else {
+          list.concat(resp.data.records)
+        }
+
         this.setData({
           hasData: true,
-          balance: res.data.data.balance,
-          records: res.data.data.records,
+          balance: balance,
+          records: list,
         })
       },
       fail: res => {

@@ -2,13 +2,13 @@
 <view class="container">
   <view class="card-main">
     <view class="card-main-balance">
-      剩余积分：{{balance}}
+      <image class="card-main-icon" src="../../images/coin.png"></image>
+      <view class="card-main-value">{{balance}}</view>
     </view>
+    <view class="card-main-msg">剩余积分</view>
   </view>
 
-  <view>
-    收支记录
-  </view>
+  <view class="card-record-divider"> 收支记录 </view>
 
   <view class="card-record">
     <view wx:for="{{records}}" wx:key="*this" class="card-record-item">
@@ -17,7 +17,6 @@
         <vew class="card-record-item-time">{{item.time}}</vew>
         <view class="card-record-item-event">{{item.event}}</view>
       </view>
-
 
       <view class="card-record-item-value-box">
         <block wx:if="{{item.type == 0}}">
@@ -30,6 +29,11 @@
     </view>
   </view>
 
-  <view class="foot-msg">------------ 没有更多记录啦 ------------</view>
+  <block wx:if="{{!hasData}}">
+    <view class="foot-msg"> 没有更多记录啦 </view>
+  </block>
+  <block wx:else>
+    <view class="foot-msg"> -- 下拉获取更多记录 -- </view>
+  </block>
 
 </view>
