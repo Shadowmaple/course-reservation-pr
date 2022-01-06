@@ -23,8 +23,8 @@
   width: 100%;
   height: auto;
   padding-left: 10%;
-  padding-bottom: 2%;
-  /* border: 2rpx solid rgb(124, 122, 122); */
+  padding-bottom: 25rpx;
+  border: 2rpx solid rgb(124, 122, 122);
 }
 
 .courseInfo-courseName {
@@ -105,21 +105,21 @@
 .comment-box {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  /* background-color:  rgb(143, 223, 226); */
+  justify-content: center;
+  align-items: center;
   padding: 20rpx;
   width: 90%;
-  /* border: 2rpx solid rgb(182, 179, 179); */
-  margin-bottom: 200rpx;
+  margin-bottom: 180rpx;
 }
 
 .comment-item {
-  /* background-color: rgb(174, 205, 238); */
   background-color: rgb(236, 244, 245);
   padding: 10rpx;
+  width: 90%;
   border: 4rpx solid rgb(174, 205, 238);
   border-radius: 20rpx;
-  margin: 10rpx 0;
+  /* margin: 10rpx 0; */
+  margin-top: 20rpx;
 }
 
 .comment-line1 {
@@ -175,7 +175,18 @@
 }
 
 .comment-divider {
-  color:rgb(25, 118, 204);
+  color: rgb(25, 118, 204);
   font-size: 35rpx;
   margin-top: 20rpx;
+  width: 90%;
+  text-align: center;
+  padding-bottom: 20rpx;
+  padding-top: 5rpx;
+  border-bottom: 2rpx solid rgb(25, 118, 204);
+}
+
+.loadmore {
+  margin: 20rpx 0;
+  font-size: 25rpx;
+  color: rgb(0, 153, 255);
 }

@@ -29,11 +29,6 @@
     </view>
   </view>
 
-  <block wx:if="{{!hasData}}">
-    <view class="foot-msg"> 没有更多记录啦 </view>
-  </block>
-  <block wx:else>
-    <view class="foot-msg"> -- 下拉获取更多记录 -- </view>
-  </block>
+  <view class="foot-msg"> -- 只显示最近的 20 条记录 -- </view>
 
 </view>

@@ -6,6 +6,7 @@ const DefaultUserAvatar = "../../images/user-unlogin.svg"
 
 Page({
   data: {
+    isHideLoadMore: false,
     hasData: true,
     courseID: 0,
     currentPage: 0,
@@ -295,8 +296,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    if (this.data.courseID == 0) {
+    // 加载动画
+    wx.showNavigationBarLoading() // 在标题栏中显示加载
+    setTimeout(function() {
+      wx.hideNavigationBarLoading() // 完成停止加载
+      wx.stopPullDownRefresh() // 停止下拉刷新
+    }, 1500)
+
+    var courseID = this.data.courseID
+    if (courseID <= 0) {
       console.log('refresh failed: courseID is empty.')
+      wx.hideNavigationBarLoading() // 完成停止加载
+      wx.stopPullDownRefresh() // 停止下拉刷新
       return
     }
     this.requestCourseInfo(courseID)
@@ -310,6 +321,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    wx.showLoading({
+      title: "加载中"
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
+
     if (this.data.courseID == 0) {
       console.log('refresh failed: courseID is empty.')
       return

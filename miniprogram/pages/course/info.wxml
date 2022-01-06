@@ -86,6 +86,9 @@
 
       </view>
     </block>
+
+    <view class="loadmore"> -- 下拉加载更多 -- </view>
+
   </view>
 
 </view>
