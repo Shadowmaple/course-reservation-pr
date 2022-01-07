@@ -1,1 +1,192 @@
 /* pages/course/info.wxss */
+
+/* -------------- */
+/* courseInfo css */
+/* -------------- */
+
+.course-image-box {
+  width: 100%;
+  height: 400rpx;
+}
+
+.course-image {
+  width: 100%;
+  height: 400rpx;
+}
+
+.courseInfo-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* background-color: rgb(143, 223, 226); */
+  width: 100%;
+  height: auto;
+  padding-left: 10%;
+  padding-bottom: 25rpx;
+  border: 2rpx solid rgb(124, 122, 122);
+}
+
+.courseInfo-courseName {
+  font-size: 45rpx;
+  margin: 10rpx 0;
+  color: rgb(0, 153, 255);
+  font-weight: bold;
+}
+
+.courseInfo-teacher, .courseInfo-time, .courseInfo-period, .courseInfo-price, .courseInfo-num {
+  margin: 2rpx 0;
+}
+
+.courseInfo-desc {
+  margin: 5rpx 0;
+  height: auto;
+  width: 85%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+/* 预约/取消预约button */
+.reserved-button {
+  background-color: rgb(0, 153, 255);
+  color: white;
+  border-radius: 12%;
+  border: 4rpx solid rgb(0, 153, 255);
+  position: relative;
+  left: 25%;
+  font-size: 35rpx;
+}
+
+/* ----------- */
+/* comment css */
+/* ----------- */
+
+.comment-publish {
+  background-color: white;
+  width: 700rpx;
+  padding: 20rpx;
+  margin: 20rpx 0;
+  position: fixed;
+  bottom: 0rpx;
+}
+
+.comment-publish-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.comment-publish-input {
+  height: 60rpx;
+  width: auto;
+  flex-basis: 70%;
+  flex-grow: 1;
+  background-color: white;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin: 10rpx 5rpx;
+  text-align: left;
+  border: 5rpx solid rgb(174, 205, 238);
+  border-radius: 20rpx;
+}
+
+.comment-publish-button {
+  background-color: rgb(0, 153, 255);
+  color: white;
+  height: 65rpx;
+  width: 120rpx;
+  font-size: 80%;
+  text-align: center;
+  margin: 10rpx 10rpx;
+  border-radius: 20rpx;
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  width: 90%;
+  margin-bottom: 180rpx;
+}
+
+.comment-item {
+  background-color: rgb(236, 244, 245);
+  padding: 10rpx;
+  width: 90%;
+  border: 4rpx solid rgb(174, 205, 238);
+  border-radius: 20rpx;
+  /* margin: 10rpx 0; */
+  margin-top: 20rpx;
+}
+
+.comment-line1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.comment-userAvatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx 10rpx;
+}
+
+.comment-meta {
+  width: auto;
+  margin: 10rpx 20rpx;
+}
+
+.comment-userNickname {
+  font-size: 35rpx;
+  margin-bottom: 5rpx;
+}
+
+.comment-time {
+  font-size: 27rpx;
+  margin-top: 10rpx;
+}
+
+.comment-line2 {
+  text-align: left;
+  padding: 10rpx 20rpx;
+}
+
+.comment-content {
+  width: 100%;
+  display: block;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.like-icon {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 10rpx;
+}
+
+.comment-line3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 5rpx 20rpx;
+}
+
+.comment-divider {
+  color: rgb(25, 118, 204);
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  width: 90%;
+  text-align: center;
+  padding-bottom: 20rpx;
+  padding-top: 5rpx;
+  border-bottom: 2rpx solid rgb(25, 118, 204);
+}
+
+.loadmore {
+  margin: 20rpx 0;
+  font-size: 25rpx;
+  color: rgb(0, 153, 255);
+}

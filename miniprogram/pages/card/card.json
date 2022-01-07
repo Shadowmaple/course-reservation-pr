@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "储值卡"
+  "navigationBarTitleText": "储值卡",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#787878"
 }
