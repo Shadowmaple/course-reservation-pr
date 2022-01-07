@@ -9,7 +9,7 @@
   <block wx:for="{{list_course}}" wx:for-item="course">
     <view class="course" bindtap="click_course">
       <image class="img_course" src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
-      <navigator url="{{url + '?course_id=' + course.course_id}}" hover-class="navigator-hover">
+      <navigator url="{{url + course.course_id}}" hover-class="navigator-hover">
         <view class="message_course">
           <view style="color: blue;">{{course.course_name}}</view>
           <view>{{course.teacher_name}}</view>

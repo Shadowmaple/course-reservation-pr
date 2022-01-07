@@ -23,9 +23,10 @@ page {
   margin: 10px 20px 0px 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  background-color: rgb(255, 255, 255);
+  justify-content: flex-start;
+  background-color: rgb(236, 244, 245);
   border-radius: 8px;
+  border:1px solid rgb(0, 153, 255);
 }
 .img_course{
   width: 60px;
@@ -35,5 +36,5 @@ page {
 }
 .message_course{
   font-size: small;
-  margin-right: 40px;
+  margin-left: 40px;
 }

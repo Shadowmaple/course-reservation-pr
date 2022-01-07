@@ -5,6 +5,7 @@ const app = getApp();
 
 Page({
   data: {
+    url:"../course/info?course_id=",
     list_course:[
       {
         course_name: "高等数学",
@@ -66,28 +67,6 @@ Page({
   },
   
 
-  click_course: function () {
-    wx.request({
-      url: app.globalData.apiHost + app.globalData.apiPath.courseListPath,
-      method: "get",
-      data:{
-        type:0,
-        size:20,
-        page:0
-      },
-      header:{
-        token:app.globalData.token
-      },
-      success: res => {
-        this.setData({
-          list_course:res.data.data.list
-        })
-      },
-      fail: res => {
-        console.log('request login url failed: ', res)
-      },
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载
