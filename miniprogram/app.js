@@ -11,6 +11,9 @@ App({
       courseInfoPath: "/course/info",
       userInfoPath: "/user/info",
       cardInfoPath: "/card/info",
+      messageinfoPath:"/message",
+      reserveinfoPath:"/record/list",
+      reservePath:"/course/reserve"
     }
   },
 

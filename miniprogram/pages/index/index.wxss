@@ -20,7 +20,7 @@ page {
 
 .course{
   width: 90%;
-  margin: 10px 20px;
+  margin: 10px 20px 0px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -28,11 +28,12 @@ page {
   border-radius: 8px;
 }
 .img_course{
-  width: 40px;
+  width: 60px;
   height: 40px;
   margin-left: 20px;
+  margin-top: 5px;
 }
 .message_course{
   font-size: small;
-  margin-right: 20px;
+  margin-right: 40px;
 }

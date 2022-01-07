@@ -1,1 +1,40 @@
 /* pages/message/message.wxss */
+.reserve_or_not{
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px 10px 10px;
+  padding-left: 10px;
+  border-radius: 8px;
+  background-color: rgb(236, 244, 245);
+  border:1px solid rgb(0, 153, 255);
+}
+
+.user_img{
+  width:40px;
+  height: 40px;
+  margin: 10px 10px 10px 10px;
+}
+
+.like{
+  display: flex;
+  margin:0px 10px 10px 10px;
+  background-color: rgb(236, 244, 245);
+  font-size: small;
+  border:1px solid rgb(0, 153, 255);
+  border-radius: 8px;
+}
+
+.name_and_time{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 10px 0px;
+}
+
+.comment{
+  width:20%;
+  height: 50px;
+  margin: 10px 10px 10px 10px;
+  text-align: right;
+  color:rgb(254,176,160);
+  flex-grow: 1;
+}

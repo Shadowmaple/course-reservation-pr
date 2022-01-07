@@ -5,14 +5,19 @@
     </input>
     <icon type="cancel" color="lightblue" size="20"></icon>
   </view>
-  <view class="course" bindtap="click_course">
-    <image class="img_course" src="/../../images/user-unlogin.png"></image>
-    <navigator url="{{url}}" hover-class="navigator-hover">
-      <view class="message_course">
-        <view style="color: blue;">{{course}}</view>
-        <view>{{teacher}}</view>
-        <view>{{date}}</view>
-      </view>
-    </navigator>
-  </view>
+
+  <block wx:for="{{list_course}}" wx:for-item="course">
+    <view class="course" bindtap="click_course">
+      <image class="img_course" src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
+      <navigator url="{{url + '?course_id=' + course.course_id}}" hover-class="navigator-hover">
+        <view class="message_course">
+          <view style="color: blue;">{{course.course_name}}</view>
+          <view>{{course.teacher_name}}</view>
+          <view>{{course.start_time + "~" +course.end_time}}</view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+  
+
 </view>

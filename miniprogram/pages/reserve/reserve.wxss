@@ -1,1 +1,70 @@
 /* pages/reserve/reserve.wxss */
+.select{
+  display: flex;
+}
+
+.button1{
+  border: 1px soild black;
+  background-color: white;
+  flex-grow: 1;
+}
+
+.finished{
+  display: flex;
+  background-color: white;
+  font-size: small;
+  justify-content: space-between;
+  margin: 10px 10px 0px 10px;
+  flex-grow: 1;
+  border-radius: 8px;
+  color: grey;
+}
+
+.open{
+  display: flex;
+  background-color:white;
+  font-size: small;
+  justify-content: space-between;
+  margin: 10px 10px 0px 10px;
+  flex-grow: 1;
+  border-radius: 8px;
+  color: black;
+}
+
+.not_open{
+  display: flex;
+  background-color:white;
+  font-size: small;
+  justify-content: space-between;
+  margin: 10px 10px 0px 10px;
+  flex-grow: 1;
+  border-radius: 8px;
+  color:rgb(0, 153, 255);
+}
+
+image{
+  width: 100px;
+  height: auto;
+}
+
+.information{
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.status{
+  width: 60px;
+  font-size: 10px;
+  margin: auto 0px auto 0px;
+}
+
+.reserve{
+  width: 60px;
+  margin: auto 9px auto 0px;
+  padding: 2px 1px;
+  font-size: 10px;
+  color: white;
+  background-color: rgb(0, 153, 255);
+}
