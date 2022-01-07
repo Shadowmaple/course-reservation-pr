@@ -45,7 +45,7 @@
   <view class="comment-publish">
     <vew style="padding-left: 10rpx;">发布评论（限100字）：</vew>
     <view class="comment-publish-body">
-      <input class="comment-publish-input" type="text" maxlength="100" confirm-type="send" placeholder="有什么想说的呢？" auto-focus bindinput="clickPublishComment" bindconfirm="clickPublishCommentForInput" />
+      <input class="comment-publish-input" type="text" maxlength="100" confirm-type="send" placeholder="有什么想说的呢？" bindinput="clickPublishComment" bindconfirm="clickPublishCommentForInput" />
       <button class="comment-publish-button" bindtap="clickPublishComment">发送</button>
     </view>
   </view>

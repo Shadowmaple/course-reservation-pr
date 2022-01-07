@@ -10,16 +10,16 @@
   <!-- 储值卡 -->
   <view class="item">
     <image class="item-icon" src="../../images/card.svg"></image>
-    <navigator url="../card/card" hover-class="navigator-hover">
-      <view class="card-name">储值卡</view>
+    <navigator url="../card/card" hover-class="navigator-hover" class="item-navigator">
+      <view class="item-name">储值卡</view>
     </navigator>
   </view>
 
   <!-- 消息提醒 -->
   <view class="item">
     <image class="item-icon" src="../../images/message.svg"></image>
-    <navigator url="../message/message" hover-class="navigator-hover">
-      <view class="message-name">消息提醒</view>
+    <navigator url="../message/message" hover-class="navigator-hover" class="item-navigator">
+      <view class="item-name">消息提醒</view>
     </navigator>
   </view>
 

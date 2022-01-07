@@ -2,7 +2,10 @@
 App({
   globalData: {
     token: "",
-    userInfo: {},
+    userInfo: {
+      nicknae: "",
+      avatar: "",
+    },
     hasUserInfo: false,
     apiHost: "http://127.0.0.1:8080",
     apiPath : {
@@ -29,7 +32,6 @@ App({
       console.log('is_login: ', res.is_login)
       if (!res.is_login) {
         this.login()
-        console.log("test this1: ", this)
         wx.showModal({
           title: '授权登陆',
           content: '授权微信登陆并获取基本信息',
@@ -39,7 +41,6 @@ App({
           success: res => {
             if (res.confirm) {
               console.log('用户点击确定')
-              console.log("test this2: ", this)
               this.getUserProfile()
             }
           }
@@ -116,22 +117,90 @@ App({
 
   // 获取用户信息，调用wx方法
   getUserProfile: function () {
-    console.log("test this3: ", this)
     // 使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
       desc: '展示用户信息',
       success: res => {
-        console.log("getUserProfile res: ", res)
-        console.log("test this4: ", this)
         this.globalData.userInfo = res.userInfo
+        var userInfo = {
+          'nickname': res.userInfo.nickName,
+          'avatar': res.userInfo.avatarUrl
+        }
+        this.globalData.userInfo = userInfo
         this.globalData.hasUserInfo = true
         wx.setStorage({
           key: 'userInfo',
-          data: res.userInfo
+          data: userInfo
         })
+
+        // 请求后台API更新用户信息
+        this.requestUpdateUserInfoAPI(userInfo.nickname, userInfo.avatar)
       },
       fail: res => {
         console.log('getUserProfile fail res: ', res)
+      }
+    })
+  },
+
+  // 请求修改用户信息API
+  requestUpdateUserInfoAPI: function (nickname, avatar) {
+    wx.request({
+      url: this.globalData.apiHost + this.globalData.apiPath.userInfoPath,
+      method: 'post',
+      data: {
+        nickname: nickname,
+        avatar: avatar
+      },
+      header: {
+        token: this.globalData.token,
+      },
+      success: res => {
+        if (res.data.code != 0) {
+          console.warn('requestUpdateUserInfoAPI error: ', res.data)
+          return
+        }
+        var userInfo = this.globalData.userInfo
+        userInfo.nickname = nickname
+        userInfo.avatar = avatar
+        this.globalData.userInfo = userInfo
+        // 保存到缓存
+        wx.setStorage({
+          key: 'userInfo',
+          data: userInfo,
+        })
+      },
+      fail: res => {
+        console.log('requestUpdateUserInfoAPI failed: ', res)
+      }
+    })
+  },
+
+  // 请求获取用户信息API
+  requestGetUserInfoAPI: function () {
+    wx.request({
+      url: this.globalData.apiHost + this.globalData.apiPath.userInfoPath,
+      method: 'get',
+      header: {
+        token: this.globalData.token,
+      },
+      success: res => {
+        var resp = res.data
+        if (resp.code != 0) {
+          console.warn('requestGetUserInfoAPI error: ', resp)
+          return
+        }
+        var userInfo = this.globalData.userInfo
+        userInfo.nickname = resp.data.nickname
+        userInfo.avatar = resp.data.avatar
+        this.globalData.userInfo = userInfo
+        // 保存到缓存
+        wx.setStorage({
+          key: 'userInfo',
+          data: userInfo,
+        })
+      },
+      fail: res => {
+        console.log('requestGetUserInfoAPI failed: ', res)
       }
     })
   },
