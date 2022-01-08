@@ -117,9 +117,17 @@ Page({
         page: page,
       },
       success: res => {
+        var resp = res.data
+        if (resp.code != 0) {
+          console.warn('requestCommentList error: ', resp)
+          return
+        }
         var list = new Array
-        for (let i in res.data.list) {
-          var item = res.data.list[i]
+        if (page > 0) {
+          list = this.data.commentList
+        }
+        for (let i in resp.data.list) {
+          var item = resp.data.list[i]
           list.push({
             id: item.id, // 评论id
             content: item.content,
@@ -130,6 +138,9 @@ Page({
             hasLiked: item.has_liked,
           })
         }
+        this.setData({
+          commentList: list,
+        })
       },
       fail: res => {
         console.error('request commentList error: ', res)
@@ -224,7 +235,8 @@ Page({
   },
 
   // 在评论框中输入内容触发的事件
-  inputCommentCentent: function (event) {
+  inputCommentContent: function (event) {
+    console.log('input: ', event)
     this.data.inputCommentValue = event.detail.value
   },
 
@@ -235,6 +247,10 @@ Page({
     if (content === "") {
       return
     }
+    // 清空输入框
+    this.setData({
+      inputCommentValue: "",
+    })
     this.requestCommentPublish(content, 0)
   },
 
@@ -245,6 +261,10 @@ Page({
     if (content === "") {
       return
     }
+    // 清空输入框
+    this.setData({
+      inputCommentValue: "",
+    })
     this.requestCommentPublish(content, 0)
   },
 
