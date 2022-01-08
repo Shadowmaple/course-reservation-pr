@@ -98,14 +98,19 @@ App({
             code: res.code
           },
           success: res => {
-            console.log('res: ', res)
-            console.log('token: ' + res.data.token)
+            var resp = res.data
+            console.log('login res: ', resp)
+            if (resp.code != 0) {
+              console.warn('request login API err: ', resp)
+              return
+            }
+            console.log('token: ', resp.data.token)
             // 保存到全局数据
-            this.globalData.token = res.data.token
+            this.globalData.token = resp.data.token
             // 保存到缓存
             wx.setStorage({
               key: 'token',
-              data: res.data.token,
+              data: resp.data.token,
             })
           },
           fail: res => {
