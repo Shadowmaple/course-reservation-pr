@@ -9,6 +9,7 @@ Page({
    */
   data: {
     type:0,
+    page:0,
     list_record:[
       {
         course_name:"高等数学",
@@ -57,7 +58,7 @@ Page({
 
   click:function(event){
     wx.request({
-      url: app.globalData.apiHost + app.globalData.apiPath.reserveinfoPath,
+      url: app.globalData.apiHost + app.globalData.apiPath.reserveListPath,
       method: "get",
       data:{
         type:event.currentTarget.dataset.type,
@@ -69,22 +70,22 @@ Page({
       },
       success: res => {
         this.setData({
-          list_record:res.data.data.list,
-          type:event.currentTarget.dataset.type
+          list_record:res.data.list,
+          type:event.currentTarget.dataset.type,
         })
       },
       fail: res => {
         console.log(event.currentTarget.dataset.type)
         this.setData({
-          type:1
+          type:event.currentTarget.dataset.type,
         })
       },
     })
   },
-
+  //预约申请
   requestReserve:function(event){
     wx.request({
-      url: app.globalData.apiHost + app.globalData.apiPath.reservePath,
+      url: app.globalData.apiHost + app.globalData.apiPath.reserveCoursePath,
       method: "post",
       data:{
         course_id:event.currentTarget.dataset.record.course_id,
@@ -109,32 +110,51 @@ Page({
     })
   },
 
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options)
+  //请求预约列表
+  requestReserveList:function(page){
     wx.request({
-      url: app.globalData.apiHost + app.globalData.apiPath.reserveinfoPath,
+      url: app.globalData.apiHost + app.globalData.apiPath.reserveListPath,
       method: "get",
       data:{
         type:0,
         size:20,
-        page:0
+        page:page
       },
       header:{
         token:app.globalData.token
       },
       success: res => {
-        this.setData({
-          list_record:res.data.data.list
-        })
+        var list = this.data.list_record
+        if(page==0)
+        {
+          this.setData({
+            list_record:res.data.list
+          })
+        } else{
+          for (let item in list) {
+            this.list_record.push(list[item]);
+          }
+          this.setData({
+              list_record:this.list_record
+          })
+        }
       },
       fail: res => {
         console.log()
       },
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+   this.requestReserveList(0)
+   this.setData(
+     {
+       page:1
+     }
+   )
   },
 
   /**
@@ -169,20 +189,31 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.requestReserveList(0);
+    this.setData({
+      page: 1
+    })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    wx.showLoading({
+      title: "加载中"
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
+    this.requestReserveList(this.data.page);
+    this.setData({
+      page: this.data.page + 1
+    })
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   }
 })

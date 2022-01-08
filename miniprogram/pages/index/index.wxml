@@ -1,23 +1,28 @@
 <view class="container">
   <view class="search">
-    <icon class="search_icon" type="search" color="lightblue" size="20"></icon>
-    <input class="search-text" type="text" value="输入课程名" confirm-type="search">
+    <icon class="search_icon" bindtap="requestSearch" type="search" color="lightblue" size="30"></icon>
+    <input class="search-text" value="{{inputContentValue}}" bindinput="inputSearchContent" bindconfirm="requestSearchForInput" type="text" placeholder="输入课程名" confirm-type="search">
     </input>
-    <icon type="cancel" color="lightblue" size="20"></icon>
+    <view class="clear_icon" bindtap="clearInput">
+    <icon  type="cancel"  color="lightblue" size="30" style="width: 40rpx; height: 44rpx; display: block; box-sizing: border-box" catchtap="clearInput"></icon>
+    </view>
   </view>
 
   <block wx:for="{{list_course}}" wx:for-item="course">
-    <view class="course" bindtap="click_course">
+    <view class="course">
       <image class="img_course" src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
-      <navigator url="{{url + course.course_id}}" hover-class="navigator-hover">
-        <view class="message_course">
+      <view class="message_course">
+        <navigator url="{{url + course.course_id}}" hover-class="navigator-hover">
           <view style="color: blue;">{{course.course_name}}</view>
           <view>{{course.teacher_name}}</view>
           <view>{{course.start_time + "~" +course.end_time}}</view>
-        </view>
+        </navigator>
+      </view>
+      <navigator url="{{url + course.course_id}}" hover-class="navigator-hover">
+        <button class="check">查看详情</button>  
       </navigator>
     </view>
   </block>
-  
+
 
 </view>

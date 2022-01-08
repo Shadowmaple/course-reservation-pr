@@ -18,8 +18,8 @@
           <view style="display: inline;">{{record.total}}</view>
         </view>
         <view class="time">
-          <view>上课时间:{{record.start_time}}</view>
-          <view>下课时间:{{record.end_time}}</view>
+          <view>开课时间:{{record.start_time}}</view>
+          <view>结课时间:{{record.end_time}}</view>
         </view>
       </view>
       
@@ -49,8 +49,8 @@
           <view style="display: inline;">{{record.total}}</view>
         </view>
         <view class="time">
-          <view>上课时间:{{record.start_time}}</view>
-          <view>下课时间:{{record.end_time}}</view>
+          <view>开课时间:{{record.start_time}}</view>
+          <view>结课时间:{{record.end_time}}</view>
         </view>
       </view>
       <block>

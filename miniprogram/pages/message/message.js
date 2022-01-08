@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    page:0,
     list_message:[
       {
         type:0,
@@ -43,29 +44,46 @@ Page({
     ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  requestMessageList:function(page)
+  {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.messagePath,
       method: "get",
       data:{
         size:20,
-        page:0
+        page:page
       },
       header:{
         token:app.globalData.token
       },
       success: res => {
-        this.setData({
-          list_message:res.data.data.list
-        })
+        var list =  res.data.list
+        if(page == 0)
+        {
+          this.setData({
+            list_message:res.data.list
+          })
+        }else{
+          for (let i in list)
+          {
+            this.list_message.push(list[i])
+          }
+          this.setData({
+            list_message:this.list_message
+          })
+        }
       },
       fail: res => {
         console.log('request login url failed: ', res)
       },
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.requestMessageList(0)
   },
 
   /**
@@ -100,14 +118,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.requestMessageList(0)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    wx.showLoading({
+      title: "加载中"
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
+    this.setData({
+      page:this.page+1
+    })
   },
 
   /**

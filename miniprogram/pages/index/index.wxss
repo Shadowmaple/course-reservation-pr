@@ -1,6 +1,5 @@
 page {
   background: #f6f6f6;
-  
 }
 
 .search{
@@ -16,11 +15,18 @@ page {
 }
 .search-text{
   color: rgb(225,223,224);
+  height:30px;
+}
+
+.clear_icon{
+  width: 30px;
+  height:30px;
 }
 
 .course{
   width: 90%;
   margin: 10px 20px 0px 20px;
+  padding:10px 0px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -37,4 +43,11 @@ page {
 .message_course{
   font-size: small;
   margin-left: 40px;
+}
+
+.check{
+  color:rgb(0, 153, 255);
+  font-size: small;
+  margin-top: 10px;
+  margin-left: 10px;
 }

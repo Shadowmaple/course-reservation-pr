@@ -2,7 +2,7 @@
 
 <view class="container">
   <!-- 课程详情 -->
-
+ 
   <view class="course-image-box">
     <image src="{{courseInfo.image}}" class="course-image" mode="scaleToFill"></image>
   </view>
