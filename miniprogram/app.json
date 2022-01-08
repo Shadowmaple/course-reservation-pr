@@ -5,7 +5,8 @@
     "pages/reserve/reserve",
     "pages/course/info",
     "pages/message/message",
-    "pages/card/card"
+    "pages/card/card",
+    "pages/user-info/user-info"
   ],
   "entryPagePath": "pages/index/index",
   "window": {

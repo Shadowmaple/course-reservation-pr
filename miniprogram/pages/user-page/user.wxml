@@ -5,6 +5,7 @@
   <view class="userinfo">
     <image class="userinfo-avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
     <view class="userinfo-nickname">{{nickName}}</view>
+    <image class="userinfo-arrow" src="../../images/arrow-right-line.svg" bindtap="clickJumpUserInfo"></image>
   </view>
 
   <!-- 储值卡 -->
