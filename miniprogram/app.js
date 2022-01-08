@@ -3,7 +3,7 @@ App({
   globalData: {
     token: "",
     userInfo: {
-      nicknae: "",
+      nickName: "",
       avatar: "",
     },
     hasUserInfo: false,
@@ -123,7 +123,7 @@ App({
       success: res => {
         this.globalData.userInfo = res.userInfo
         var userInfo = {
-          'nickname': res.userInfo.nickName,
+          'nickName': res.userInfo.nickName,
           'avatar': res.userInfo.avatarUrl
         }
         this.globalData.userInfo = userInfo
@@ -134,7 +134,7 @@ App({
         })
 
         // 请求后台API更新用户信息
-        this.requestUpdateUserInfoAPI(userInfo.nickname, userInfo.avatar)
+        this.requestUpdateUserInfoAPI(userInfo.nickName, userInfo.avatar)
       },
       fail: res => {
         console.log('getUserProfile fail res: ', res)
@@ -143,12 +143,12 @@ App({
   },
 
   // 请求修改用户信息API
-  requestUpdateUserInfoAPI: function (nickname, avatar) {
+  requestUpdateUserInfoAPI: function (nickName, avatar) {
     wx.request({
       url: this.globalData.apiHost + this.globalData.apiPath.userInfoPath,
       method: 'post',
       data: {
-        nickname: nickname,
+        nickName: nickName,
         avatar: avatar
       },
       header: {
@@ -160,7 +160,7 @@ App({
           return
         }
         var userInfo = this.globalData.userInfo
-        userInfo.nickname = nickname
+        userInfo.nickName = nickName
         userInfo.avatar = avatar
         this.globalData.userInfo = userInfo
         // 保存到缓存
@@ -190,7 +190,7 @@ App({
           return
         }
         var userInfo = this.globalData.userInfo
-        userInfo.nickname = resp.data.nickname
+        userInfo.nickName = resp.data.nickName
         userInfo.avatar = resp.data.avatar
         this.globalData.userInfo = userInfo
         // 保存到缓存

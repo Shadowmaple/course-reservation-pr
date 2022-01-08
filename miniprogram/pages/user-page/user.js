@@ -1,31 +1,23 @@
 //index.js
 const app = getApp()
+const UnloginAvatar = '../../images/user-unlogin.png'
 
 Page({
   data: {
-    avatarUrl: '../../images/user-unlogin.png',
-    userInfo: {},
+    avatarUrl: '',
     hasUserInfo: false,
-    nickName: "未登录",
-    // canIUseGetUserProfile: true,
-    // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') // 如需尝试获取用户信息可改为false
+    nickName: '',
   },
 
   onLoad: function () {
     console.log('golbalData: ', app.globalData)
-    if (app.globalData.hasUserInfo) {
+    if (!this.data.hasUserInfo && app.globalData.hasUserInfo) {
       var userInfo = app.globalData.userInfo
-      var nickName = this.nickName
-      if (userInfo.nickName) {
-        nickName = userInfo.nickName
-      }
-      var avatarUrl = this.avatarUrl
-      if (userInfo.avatarUrl) {
-        avatarUrl = userInfo.avatarUrl
-      }
+      var nickName = userInfo.nickName || this.data.nickName
+      var avatar = userInfo.avatar || this.data.avatarUrl
+      console.log('test: ', userInfo, nickName, avatar)
       this.setData({
-        avatarUrl: avatarUrl,
-        userInfo: userInfo,
+        avatarUrl: avatar,
         hasUserInfo: true,
         nickName: nickName,
       })
@@ -106,4 +98,7 @@ Page({
     })
   },
 
+  onShow: function () {
+    console.log('user-page on show')
+  }
 })

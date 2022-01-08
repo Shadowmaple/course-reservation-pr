@@ -235,7 +235,8 @@ Page({
   },
 
   // 在评论框中输入内容触发的事件
-  inputCommentCentent: function (event) {
+  inputCommentContent: function (event) {
+    console.log('input: ', event)
     this.data.inputCommentValue = event.detail.value
   },
 
@@ -246,6 +247,10 @@ Page({
     if (content === "") {
       return
     }
+    // 清空输入框
+    this.setData({
+      inputCommentValue: "",
+    })
     this.requestCommentPublish(content, 0)
   },
 
@@ -256,6 +261,10 @@ Page({
     if (content === "") {
       return
     }
+    // 清空输入框
+    this.setData({
+      inputCommentValue: "",
+    })
     this.requestCommentPublish(content, 0)
   },
 
