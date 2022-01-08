@@ -4,9 +4,9 @@ const UnloginAvatar = '../../images/user-unlogin.png'
 
 Page({
   data: {
-    avatarUrl: '',
+    avatarUrl: UnloginAvatar,
     hasUserInfo: false,
-    nickName: '',
+    nickName: '未登录',
   },
 
   onLoad: function () {
