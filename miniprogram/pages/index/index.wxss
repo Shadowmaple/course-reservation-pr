@@ -2,13 +2,14 @@ page {
   background: #f6f6f6;
 }
 
-.search{
+.search{ 
   display: flex;
   flex-direction: row;
   padding: 5px;
-  background-color: white;
+  /* background-color: black; */
   border: 2px solid blue;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 .search_icon{
   margin-right: 10px;
@@ -48,6 +49,6 @@ page {
 .check{
   color:rgb(0, 153, 255);
   font-size: small;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 10px;
 }
