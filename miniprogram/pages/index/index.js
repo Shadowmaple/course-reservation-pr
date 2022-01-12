@@ -86,7 +86,7 @@ Page({
       success:res =>{
         console.log("Search res:",res.data)
         this.setData({
-          list_course:res.data.list
+          list_course:res.data.data.list
         })
       },
       fail:res =>{

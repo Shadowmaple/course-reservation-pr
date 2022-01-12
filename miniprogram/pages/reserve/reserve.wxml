@@ -6,7 +6,7 @@
 </view>
 
 <block wx:if="{{type == 1}}">
-  <block wx:for="{{list_record}}" wx:for-item="record">
+  <block wx:for="{{list_record}}" wx:for-item="record" wx:for-index="index">
     <view class="{{record.status == 1?'open':(record.status == 0?'not_open':'finished')}}">
       <image src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
       <view class="information">

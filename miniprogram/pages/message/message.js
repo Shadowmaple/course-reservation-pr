@@ -58,11 +58,11 @@ Page({
       },
       success: res => {
         console.log("messagelist res:",res.data)
-        var list =  res.data.list
+        var list =  res.data.data.list
         if(page == 0)
         {
           this.setData({
-            list_message:res.data.list
+            list_message:res.data.data.list
           })
         }else{
           for (let i in list)
@@ -85,6 +85,11 @@ Page({
    */
   onLoad: function (options) {
     this.requestMessageList(0)
+    this.setData(
+      {
+        page:1
+      }
+    )
   },
 
   /**
@@ -123,6 +128,11 @@ Page({
       wx.hideLoading()
     }, 500)
     this.requestMessageList(0)
+    this.setData(
+      {
+        page:1
+      }
+    )
   },
 
   /**

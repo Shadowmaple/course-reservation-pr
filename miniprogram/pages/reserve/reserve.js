@@ -71,7 +71,7 @@ Page({
       success: res => {
         console.log("recordlist res:",res.data)
         this.setData({
-          list_record:res.data.list,
+          list_record:res.data.data.list,
           type:event.currentTarget.dataset.type,
         })
       },
@@ -127,7 +127,7 @@ Page({
         if(page==0)
         {
           this.setData({
-            list_record:res.data.list
+            list_record:res.data.data.list
           })
         } else{
           for (let item in list) {
