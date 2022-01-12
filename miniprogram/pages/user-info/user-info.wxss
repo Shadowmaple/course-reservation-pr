@@ -1,0 +1,55 @@
+/* pages/user-info/user-info.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.avatar-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 200rpx;
+}
+
+.avatar-title, .nickName-title {
+  margin-left: 50rpx;
+  margin-right: 20rpx;
+}
+
+.avatar-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  /* border: 3px solid rgb(0, 153, 255); */
+}
+
+.nickName-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 30rpx 0;
+}
+
+.nickName-value {
+  border: 2px solid black;
+  width: 50%;
+  padding: 5rpx 10rpx;
+}
+
+.confirm-button {
+  background-color: rgb(0, 153, 255);
+  color: white;
+  width: 200rpx;
+  height: 90rpx;
+  margin: 20rpx auto;
+  font-size: 32rpx;
+}

@@ -46,10 +46,6 @@ page {
   margin-left: 10px;
 }
 
-.userinfo-nickname::after {
-  border: none;
-}
-
 .item-name {
   font-size: 40rpx;
   color: black;
@@ -76,4 +72,11 @@ page {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.userinfo-arrow {
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  right: 20rpx;
 }

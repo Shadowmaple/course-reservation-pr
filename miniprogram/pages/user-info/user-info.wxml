@@ -1,0 +1,13 @@
+<!--pages/user-info/user-info.wxml-->
+
+<view class="container">
+  <view class="avatar-item">
+    <view class="avatar-title">头像：</view>
+    <image class="avatar-img" src="{{avatar}}" mode="aspectFill" bindtap="clickUpload"></image>
+  </view>
+  <view class="nickName-item">
+    <view class="nickName-title">昵称：</view>
+    <input class="nickName-value" value="{{inputValue}}" />
+  </view>
+  <button type="button" class="confirm-button" bindtap="clickUpdate">确认修改</button>
+</view>
