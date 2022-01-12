@@ -118,6 +118,7 @@ Page({
       },
       success: res => {
         var resp = res.data
+        console.log('requestCommentList res: ', resp)
         if (resp.code != 0) {
           console.warn('requestCommentList error: ', resp)
           return
@@ -161,8 +162,8 @@ Page({
         'has_reserved': hasReserved, // 期望更改的状态
       },
       success: res => {
-        console.log('request reserve API ok: ', res)
         var resp = res.data
+        console.log('request reserve API ok: ', resp)
         if (resp.code != 0) {
           console.warn('request reserve API error:', resp.code, resp.msg)
           return
@@ -194,8 +195,8 @@ Page({
         'content': content,
       },
       success: res => {
-        console.log('request comment publish API ok: ', res)
         var resp = res.data
+        console.log('request comment publish API ok: ', resp)
         if (resp.code != 0) {
           console.warn('request comment publish API error:', resp.code, resp.msg)
           return
@@ -292,6 +293,7 @@ Page({
       },
       success: res => {
         var resp = res.data
+        console.log('request commentLike res:', resp)
         if (resp.code != 0) {
           console.warn('request commentLike API error:', resp.code, resp.msg)
           return

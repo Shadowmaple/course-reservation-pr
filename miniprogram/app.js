@@ -161,8 +161,10 @@ App({
         token: this.globalData.token,
       },
       success: res => {
-        if (res.data.code != 0) {
-          console.warn('requestUpdateUserInfoAPI error: ', res.data)
+        var resp = res.data
+        console.log('request updateUserInfo res: ', resp)
+        if (resp.code != 0) {
+          console.warn('requestUpdateUserInfoAPI error: ', resp)
           return
         }
         var userInfo = this.globalData.userInfo
@@ -191,6 +193,7 @@ App({
       },
       success: res => {
         var resp = res.data
+        console.log('request getUserInfo res: ', resp)
         if (resp.code != 0) {
           console.warn('requestGetUserInfoAPI error: ', resp)
           return

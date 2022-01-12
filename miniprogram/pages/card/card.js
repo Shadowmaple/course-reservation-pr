@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    hasData: true,
+    hasData: false,
     balance: 40,
     records: [{
       id: 2,
@@ -18,7 +18,7 @@ Page({
       value: 30, // 增减积分数
       event: "取消预约课程 操作系统 成功", // 发生事件
       time: "2022-01-01 12:00"
-    }, ]
+    }]
   },
 
   /**
@@ -50,6 +50,7 @@ Page({
       },
       success: res => {
         var resp = res.data
+        console.log('request cardInfo res:', resp)
         if (resp.code != 0) {
           console.warn('request cardInfo failed failed:', resp)
           return
