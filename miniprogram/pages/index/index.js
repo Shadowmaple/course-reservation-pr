@@ -71,7 +71,6 @@ Page({
   inputSearchContent: function(event)
   {
     this.data.inputContentValue = event.detail.value;
-    console.log(this.data.inputContentValue)
   },
 
   requestSearch:function(){
@@ -85,12 +84,13 @@ Page({
         key:this.data.inputContentValue
       },
       success:res =>{
+        console.log("Search res:",res.data)
         this.setData({
           list_course:res.data.list
         })
       },
       fail:res =>{
-        console.log("request search fail")
+        console.log("request search failed")
       }
     })
   },
@@ -100,7 +100,6 @@ Page({
   },
 
   clearInput:function(){
-    console.log(this.data.inputContentValue)
     this.setData({
       inputContentValue:""
     })
@@ -113,16 +112,17 @@ Page({
       data: {
         type: 0,
         size: 20,
-        page: page
+        page: this.data.page
       },
       header: {
         token: app.globalData.token
       },
       success: res => {
+        console.log("courselist res:",res.data)
         var list = this.data.list_course
         if (page == 0) {
           this.setData({
-            list_course: res.data.list
+            list_course: res.data.data.list
           })
         } else {   
           for (let item in list) {
@@ -134,7 +134,7 @@ Page({
         }
       },
       fail: res => {
-        console.log('request course url failed: ', res)
+        console.log('request courseList failed: ')
       },
     })
   },
@@ -181,6 +181,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500);
     this.requestCourseList(0);
     this.setData({
       page: 1
