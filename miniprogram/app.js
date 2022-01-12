@@ -17,7 +17,7 @@ App({
       messageinfoPath:"/message",
       reserveListPath:"/record/list",
       commentListPath: "/comment/list",
-      reserveCoursePath: "/course/reserve",
+      reserveCoursePath: "/record/reserve",
       commentPublishPath: "/comment",
       commentLikePath: "/comment/like",
       courseSearch:"/course/search",

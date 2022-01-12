@@ -69,20 +69,21 @@ Page({
         token:app.globalData.token
       },
       success: res => {
+        console.log("recordlist res:",res.data)
         this.setData({
           list_record:res.data.list,
           type:event.currentTarget.dataset.type,
         })
       },
       fail: res => {
-        console.log(event.currentTarget.dataset.type)
+        console.log("(click)request recordlist failed")
         this.setData({
           type:event.currentTarget.dataset.type,
         })
       },
     })
   },
-  //预约申请
+  //重新预约申请
   requestReserve:function(event){
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.reserveCoursePath,
@@ -95,17 +96,14 @@ Page({
         token:app.globalData.token
       },
       success: res => {
+        console.log("reserve res:",res.data)
         var index=event.currentTarget.dataset.index
         this.data.list_record[index].has_reserved = !res.data.has_reserved;
         this.setData({
         })
       },
       fail: res => {
-        var index=event.currentTarget.dataset.index
-        this.data.list_record[index].has_reserved = false;// = !res.data.has_reserved
-        console.log(this.data.list_record[index].has_reserved)
-        this.setData({
-        })
+        console.log("requestreserve failed")
       },
     })
   },
@@ -118,12 +116,13 @@ Page({
       data:{
         type:0,
         size:20,
-        page:page
+        page:this.data.page
       },
       header:{
         token:app.globalData.token
       },
       success: res => {
+        console.log("reservelist res:",res.data)
         var list = this.data.list_record
         if(page==0)
         {
@@ -140,7 +139,7 @@ Page({
         }
       },
       fail: res => {
-        console.log()
+        console.log("requestreservelist failed")
       },
     })
   },
@@ -189,6 +188,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
     this.requestReserveList(0);
     this.setData({
       page: 1

@@ -47,16 +47,17 @@ Page({
   requestMessageList:function(page)
   {
     wx.request({
-      url: app.globalData.apiHost + app.globalData.apiPath.messagePath,
+      url: app.globalData.apiHost + app.globalData.apiPath.messageinfoPath,
       method: "get",
       data:{
         size:20,
-        page:page
+        page:this.data.page
       },
       header:{
         token:app.globalData.token
       },
       success: res => {
+        console.log("messagelist res:",res.data)
         var list =  res.data.list
         if(page == 0)
         {
@@ -118,6 +119,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
     this.requestMessageList(0)
   },
 
