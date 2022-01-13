@@ -44,14 +44,14 @@ Page({
     ]
   },
 
-  requestMessageList:function()
+  requestMessageList:function(page)
   {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.messageinfoPath,
       method: "get",
       data:{
         size:20,
-        page:this.data.page
+        page:page
       },
       header:{
         token:app.globalData.token
@@ -59,7 +59,7 @@ Page({
       success: res => {
         console.log("messagelist res:",res.data)
         var list =  res.data.data.list
-        if(this.data.page == 0)
+        if(page == 0)
         {
           this.setData({
             list_message:res.data.data.list
@@ -84,15 +84,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      page:0
-    })
-    this.requestMessageList()
-    this.setData(
-      {
-        page:1
-      }
-    )
+    this.requestMessageList(0)
+    this.data.page = 1
   },
 
   /**
@@ -130,15 +123,8 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500)
-    this.setData({
-      page:0
-    })
-    this.requestMessageList()
-    this.setData(
-      {
-        page:1
-      }
-    )
+    this.requestMessageList(0)
+    this.data.page = 1
   },
 
   /**
@@ -151,10 +137,8 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500)
-    this.requestMessageList();
-    this.setData({
-      page:this.data.page+1
-    })
+    this.requestMessageList(this.data.page);
+    this.data.page = this.data.page+1
   },
 
   /**
