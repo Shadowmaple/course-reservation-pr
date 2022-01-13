@@ -153,7 +153,7 @@ Page({
     this.setData({
       page:0
     })
-    this.requestCourseList(0);
+    this.requestCourseList();
     this.setData({
       page: 1
     })
@@ -190,7 +190,7 @@ Page({
     this.setData({
       page:0
     })
-    this.requestCourseList(0);
+    this.requestCourseList();
     this.setData({
       page: 1
     })
