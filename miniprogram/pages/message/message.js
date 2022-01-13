@@ -153,7 +153,7 @@ Page({
     }, 500)
     this.requestMessageList();
     this.setData({
-      page:this.page+1
+      page:this.data.page+1
     })
   },
 
