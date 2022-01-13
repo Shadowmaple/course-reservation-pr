@@ -1,5 +1,5 @@
 <view class="container">
-  <cover-view style="position:fixed;width:100%;background-color: #f6f6f6;display: flex;justify-content: center;">
+  <cover-view style="flex-direction: column; position:fixed;width:100%;background-color: #f6f6f6;display: flex;align-items: center;">
     <view class="search">
       <icon class="search_icon" bindtap="requestSearch" type="search" color="lightblue" size="30"></icon>
       <input class="search-text" value="{{inputContentValue}}" bindinput="inputSearchContent" bindconfirm="requestSearchForInput" type="text" placeholder="输入课程名" confirm-type="search">
@@ -8,8 +8,24 @@
         <icon type="cancel" color="lightblue" size="30" style="width: 40rpx; height: 44rpx; display: block; box-sizing: border-box" catchtap="clearInput"></icon>
       </view>
     </view>
+    <view class="clasify">
+      <view class="category"></view>
+      <view class="category"></view>
+      <view class="category"></view>
+    </view>
   </cover-view>
   <view style="height:45px;background-color: red;"></view>
+  <swiper style="height:300rpx; width:100%" indicator-dots="true" autoplay="true" circular="true" >
+    <swiper-item>
+      <image src="../../images/1.jpg" style="width: 100%; height: 100%;"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="../../images/2.jpg" style="width: 100%; height: 100%;"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="../../images/3.jpg" style="width: 100%; height: 100%;"></image>
+    </swiper-item>
+  </swiper>
   <block wx:for="{{list_course}}" wx:for-item="course">
     <view class="course">
       <image class="img_course" src="{{course.image}}"></image>

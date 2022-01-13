@@ -24,6 +24,16 @@ page {
   height:30px;
 }
 
+.clasify{
+  display: flex;
+  height: 100px;
+  width: 100%;
+}
+
+.category{
+  flex-grow: 1;
+}
+
 .course{
   width: 90%;
   margin: 10px 20px 0px 20px;
