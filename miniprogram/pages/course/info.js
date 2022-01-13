@@ -50,7 +50,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var courseID = options.course_id
+    let courseID = Number(options.course_id)
     if (!courseID || courseID <= 0) {
       console.error('no course_id or is error: ', options)
       return
