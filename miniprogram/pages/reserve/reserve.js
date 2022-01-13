@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    url: "../course/info?course_id=",
     type:0,
     page:0,
     list_record:[

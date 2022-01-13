@@ -163,7 +163,7 @@ Page({
       success: res => {
         console.log("courselist res:",res.data)
         var reslist = res.data.data.list
-        var list = {}
+        var list = []
         for (let i in reslist){
           if(reslist[i].status == 0){
             list.push(reslist[i])
@@ -194,7 +194,7 @@ Page({
       success: res => {
         console.log("courselist res:",res.data)
         var reslist = res.data.data.list
-        var list = {}
+        var list = []
         for (let i in reslist){
           if(reslist[i].status == 1){
             list.push(reslist[i])
@@ -225,7 +225,7 @@ Page({
       success: res => {
         console.log("courselist res:",res.data)
         var reslist = res.data.data.list
-        var list = {}
+        var list = []
         for (let i in reslist){
           if(reslist[i].status == 2){
             list.push(reslist[i])
