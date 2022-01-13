@@ -129,13 +129,13 @@ Page({
           return
         }
         var list = new Array
-        if (page > 0) {
+        if (this.page > 0) {
           list = this.data.commentList
         }
         for (let i in resp.data.list) {
           var item = resp.data.list[i]
           list.push({
-            id: item.id, // 评论id
+            id: item.comment_id, // 评论id
             content: item.content,
             time: item.time,
             userNickname: item.user_nickname,
