@@ -293,7 +293,7 @@ Page({
         token: app.globalData.token,
       },
       data: {
-        id: id,
+        comment_id: id,
         has_liked: expectLiked,
       },
       success: res => {
