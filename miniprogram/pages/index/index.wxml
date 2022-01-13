@@ -12,12 +12,13 @@
   <view style="height:45px;background-color: red;"></view>
   <block wx:for="{{list_course}}" wx:for-item="course">
     <view class="course">
-      <image class="img_course" src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
+      <image class="img_course" src="{{course.image}}"></image>
       <view class="message_course">
         <navigator url="{{url + course.course_id}}" hover-class="navigator-hover">
           <view style="color: blue;">{{course.course_name}}</view>
           <view>{{course.teacher_name}}</view>
-          <view>{{course.start_time + "~" +course.end_time}}</view>
+          <view>{{course.start_time}}</view>
+          <view>{{course.end_time}}</view>
         </navigator>
       </view>
       <!-- <navigator url="{{url + course.course_id}}" hover-class="navigator-hover"> -->
