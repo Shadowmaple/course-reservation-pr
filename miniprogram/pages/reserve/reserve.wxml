@@ -1,8 +1,8 @@
 <!--pages/reserve/reserve.wxml-->
 
 <view class="select">
-  <button class="button1" data-type='0' bindtap="click">已预约</button><!--type为0代表已预约-->
-  <button class="button1" data-type='1' bindtap="click">已取消预约</button><!--type为1代表已取消预约-->
+  <button class="button1" data-type='0' bindtap="click" style="margin-right: 1px;">已预约</button><!--type为0代表已预约-->
+  <button class="button1" data-type='1' bindtap="click" style="margin-left: 1px;">已取消预约</button><!--type为1代表已取消预约-->
 </view>
 
 <block wx:if="{{type == 1}}">

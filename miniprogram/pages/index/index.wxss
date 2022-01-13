@@ -27,12 +27,20 @@ page {
 
 .clasify{
   display: flex;
-  height: 100px;
+  justify-content: center;
+  height: 30px;
   width: 100%;
+  padding-top: 5px;
 }
 
 .category{
+  border-radius: 8px;
+  border-right-style: solid;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: grey;
   flex-grow: 1;
+  text-align: center;
 }
 
 .course{

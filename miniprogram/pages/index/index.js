@@ -120,7 +120,7 @@ Page({
       data: {
         type: 0,
         size: 20,
-        page: page
+        page: 0
       },
       header: {
         token: app.globalData.token
@@ -147,7 +147,99 @@ Page({
       },
     })
   },
-
+  // 搜索可预约的课程
+  selectzero:function(){
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.courseListPath,
+      method: "get",
+      data: {
+        type: 0,
+        size: 20,
+        page: 0
+      },
+      header: {
+        token: app.globalData.token
+      },
+      success: res => {
+        console.log("courselist res:",res.data)
+        var reslist = res.data.data.list
+        var list = {}
+        for (let i in reslist){
+          if(reslist[i].status == 0){
+            list.push(reslist[i])
+          }
+        }
+        this.setData({
+          list_course:list
+        })
+      },
+      fail: res => {
+        console.log('request courseList failed: ')
+      },
+    })
+  },
+  //搜索已开课的课程
+  selectone:function(){
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.courseListPath,
+      method: "get",
+      data: {
+        type: 0,
+        size: 20,
+        page: 0
+      },
+      header: {
+        token: app.globalData.token
+      },
+      success: res => {
+        console.log("courselist res:",res.data)
+        var reslist = res.data.data.list
+        var list = {}
+        for (let i in reslist){
+          if(reslist[i].status == 1){
+            list.push(reslist[i])
+          }
+        }
+        this.setData({
+          list_course:list
+        })
+      },
+      fail: res => {
+        console.log('request courseList failed: ')
+      },
+    })
+  },
+  //搜索已结束的课程
+  selecttwo:function(){
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.courseListPath,
+      method: "get",
+      data: {
+        type: 0,
+        size: 20,
+        page: 0
+      },
+      header: {
+        token: app.globalData.token
+      },
+      success: res => {
+        console.log("courselist res:",res.data)
+        var reslist = res.data.data.list
+        var list = {}
+        for (let i in reslist){
+          if(reslist[i].status == 2){
+            list.push(reslist[i])
+          }
+        }
+        this.setData({
+          list_course:list
+        })
+      },
+      fail: res => {
+        console.log('request courseList failed: ')
+      },
+    })
+  },
   clickNavigateTo:function(event)
   {
     wx.navigateTo({

@@ -2,7 +2,7 @@
 .reserve_or_not{
   display: flex;
   flex-direction: column;
-  margin: 0px 10px 10px 10px;
+  margin: 10px 10px 0px 10px;
   padding-left: 10px;
   border-radius: 8px;
   background-color: rgb(236, 244, 245);
@@ -17,7 +17,7 @@
 
 .like{
   display: flex;
-  margin:0px 10px 10px 10px;
+  margin:10px 10px 10px 10px;
   background-color: rgb(236, 244, 245);
   font-size: small;
   border:1px solid rgb(0, 153, 255);
