@@ -289,7 +289,7 @@ Page({
       },
       data: {
         id: id,
-        hasLiked: expectLiked,
+        has_liked: expectLiked,
       },
       success: res => {
         var resp = res.data
