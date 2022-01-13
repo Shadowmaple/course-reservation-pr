@@ -105,7 +105,7 @@ Page({
     })
   },
 
-  requestCourseList: function (page) {
+  requestCourseList: function () {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.courseListPath,
       method: "get",
@@ -126,10 +126,10 @@ Page({
           })
         } else {   
           for (let item in list) {
-            this.list_course.push(list[item]);
+            this.data.list_course.push(list[item]);
           }
           this.setData({
-              list_course:this.list_course
+              list_course:this.data.list_course
           })
         }
       },
@@ -150,6 +150,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      page:0
+    })
     this.requestCourseList(0);
     this.setData({
       page: 1
@@ -184,6 +187,9 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500);
+    this.setData({
+      page:0
+    })
     this.requestCourseList(0);
     this.setData({
       page: 1

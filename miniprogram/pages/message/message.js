@@ -44,7 +44,7 @@ Page({
     ]
   },
 
-  requestMessageList:function(page)
+  requestMessageList:function()
   {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.messageinfoPath,
@@ -67,10 +67,10 @@ Page({
         }else{
           for (let i in list)
           {
-            this.list_message.push(list[i])
+            this.data.list_message.push(list[i])
           }
           this.setData({
-            list_message:this.list_message
+            list_message:this.data.list_message
           })
         }
       },
@@ -84,7 +84,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.requestMessageList(0)
+    this.setData({
+      page:0
+    })
+    this.requestMessageList()
     this.setData(
       {
         page:1
@@ -127,7 +130,10 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500)
-    this.requestMessageList(0)
+    this.setData({
+      page:0
+    })
+    this.requestMessageList()
     this.setData(
       {
         page:1
@@ -145,6 +151,7 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500)
+    this.requestMessageList();
     this.setData({
       page:this.page+1
     })
