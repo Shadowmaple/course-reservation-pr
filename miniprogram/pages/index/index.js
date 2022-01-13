@@ -9,12 +9,12 @@ Page({
     page: 0,
     inputContentValue:"",
     list_course: [{
-        course_name: "高等数学",
+        course_name: "计算机组成原理",
         teacher_name: "李永乐",
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -22,7 +22,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -30,7 +30,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -38,7 +38,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -46,7 +46,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -54,7 +54,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -62,7 +62,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -70,7 +70,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
-        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
+        image:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
     ]
   },
