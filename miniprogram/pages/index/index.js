@@ -105,14 +105,14 @@ Page({
     })
   },
 
-  requestCourseList: function () {
+  requestCourseList: function (page) {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.courseListPath,
       method: "get",
       data: {
         type: 0,
         size: 20,
-        page: this.data.page
+        page: page
       },
       header: {
         token: app.globalData.token
@@ -120,16 +120,16 @@ Page({
       success: res => {
         console.log("courselist res:",res.data)
         var list = this.data.list_course
-        if (this.data.page == 0) {
+        if (page == 0) {
           this.setData({
-            list_course: res.data.data.list
+            list_course: res.data.data.list,
           })
         } else {   
           for (let item in list) {
             this.data.list_course.push(list[item]);
           }
           this.setData({
-              list_course:this.data.list_course
+              list_course:this.data.list_course,
           })
         }
       },
@@ -150,13 +150,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      page:0
-    })
-    this.requestCourseList();
-    this.setData({
-      page: 1
-    })
+    this.requestCourseList(0);
+    this.data.page = +1
   },
 
   /**
@@ -187,13 +182,8 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500);
-    this.setData({
-      page:0
-    })
-    this.requestCourseList();
-    this.setData({
-      page: 1
-    })
+    this.requestCourseList(0);
+    this.data.page = 1
   },
 
   /**
@@ -207,8 +197,6 @@ Page({
       wx.hideLoading()
     }, 500)
     this.requestCourseList(this.data.page);
-    this.setData({
-      page: this.data.page + 1
-    })
+    this.data.page = this.data.page+1
   },
 })
