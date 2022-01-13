@@ -75,10 +75,15 @@ Page({
         id: courseID
       },
       success: res => {
-        var data = res.data
-        var courseInfo = {
+        let resp = res.data
+        if (resp.code != 0) {
+          console.warn('request courseInfo error:', resp.code, resp.msg)
+          return
+        }
+        let data = resp.data
+        let courseInfo = {
           courseID: data.course_id,
-          courseName: data.courseName,
+          courseName: data.course_name,
           teacher: data.teacher_name,
           courseDesc: data.course_desc,
           total: data.total,
@@ -275,10 +280,10 @@ Page({
 
   // 点击点赞/取消点赞
   clickLike: function (event) {
-    console.log('clickLike event:', event)
     var expectLiked = !event.currentTarget.dataset.hasLiked // 期望更改的点赞状态
     var id = event.currentTarget.dataset.id
     var index = event.currentTarget.dataset.index
+    console.log('request params:', id, expectLiked, index)
 
     // 请求点赞API
     wx.request({
