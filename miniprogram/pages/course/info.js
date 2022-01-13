@@ -175,6 +175,11 @@ Page({
         }
         var courseInfo = this.data.courseInfo
         courseInfo.hasReserved = resp.data.has_reserved
+        if (hasReserved) {
+          courseInfo.likeNum++
+        } else if (courseInfo.likeNum > 0) {
+          courseInfo.likeNum--
+        }
         this.setData({
           courseInfo: courseInfo,
         })
