@@ -21,6 +21,7 @@ App({
       commentPublishPath: "/comment",
       commentLikePath: "/comment/like",
       courseSearch:"/course/search",
+      cardBalancePath: "/card/balance",
     }
   },
 

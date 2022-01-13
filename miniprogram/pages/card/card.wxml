@@ -6,6 +6,7 @@
       <view class="card-main-value">{{balance}}</view>
     </view>
     <view class="card-main-msg">剩余积分</view>
+    <button catchtap="clickPayment" class="pay-button" type="default">点击充值</button>
   </view>
 
   <view class="card-record-divider"> 收支记录 </view>
