@@ -55,6 +55,7 @@
   position: relative;
   left: 25%;
   font-size: 35rpx;
+  width: 200rpx;
 }
 
 /* ----------- */

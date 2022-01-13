@@ -109,5 +109,6 @@ page {
 }
 
 .pay-button {
-  border: 2rpx solid rgb(0, 153, 255);
+  border: 4rpx solid rgb(0, 153, 255);
+  margin: 10rpx 0;
 }
