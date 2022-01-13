@@ -58,19 +58,20 @@ Page({
       },
       success: res => {
         console.log("messagelist res:",res.data)
-        var list =  res.data.data.list
+        var list = this.data.list_message
+        var newlist =  res.data.data.list
         if(page == 0)
         {
           this.setData({
-            list_message:res.data.data.list
+            list_message:newlist
           })
         }else{
-          for (let i in list)
+          for (let i in newlist)
           {
-            this.data.list_message.push(list[i])
+            list.push(newlist[i])
           }
           this.setData({
-            list_message:this.data.list_message
+            list_message:list
           })
         }
       },
