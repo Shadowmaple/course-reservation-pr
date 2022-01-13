@@ -77,9 +77,6 @@ Page({
       },
       fail: res => {
         console.log("(click)request recordlist failed")
-        this.setData({
-          type:event.currentTarget.dataset.type,
-        })
       },
     })
   },
@@ -89,8 +86,8 @@ Page({
       url: app.globalData.apiHost + app.globalData.apiPath.reserveCoursePath,
       method: "post",
       data:{
-        course_id:event.currentTarget.dataset.record.course_id,
-        has_reserved:!(event.currentTarget.dataset.record.hasReserved),
+        course_id: event.currentTarget.dataset.record.course_id,
+        has_reserved: !(event.currentTarget.dataset.record.hasReserved),
       },
       header:{
         token:app.globalData.token
@@ -98,7 +95,7 @@ Page({
       success: res => {
         console.log("reserve res:",res.data)
         var index=event.currentTarget.dataset.index
-        this.data.list_record[index].has_reserved = !res.data.has_reserved;
+        this.data.list_record[index].has_reserved = !this.data.has_reserved;
         this.setData({
         })
       },
@@ -109,12 +106,12 @@ Page({
   },
 
   //请求预约列表
-  requestReserveList:function(page){
+  requestReserveList:function(){
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.reserveListPath,
       method: "get",
       data:{
-        type:0,
+        type:this.data.type,
         size:20,
         page:this.data.page
       },
@@ -148,7 +145,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   this.requestReserveList(0)
+   this.requestReserveList()
    this.setData(
      {
        page:1
@@ -191,7 +188,7 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500)
-    this.requestReserveList(0);
+    this.requestReserveList();
     this.setData({
       page: 1
     })
