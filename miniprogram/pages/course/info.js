@@ -309,6 +309,11 @@ Page({
           return
         }
         commentList[index].hasLiked = resp.has_liked
+        if (expectLiked) {
+          commentList[index].likeNum++
+        } else if (commentList[index].likeNum > 0) {
+          commentList[index].likeNum--
+        }
         this.setData({
           commentList: commentList,
         })
