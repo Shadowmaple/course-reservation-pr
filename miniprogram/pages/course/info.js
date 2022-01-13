@@ -156,7 +156,7 @@ Page({
   },
 
   // 请求预约/取消预约API
-  requestReservedAPI: function (hasReserved = Boolean) {
+  requestReservedAPI: function (expectReserved = Boolean) {
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.reserveCoursePath,
       method: 'POST',
@@ -165,17 +165,17 @@ Page({
       },
       data: {
         'course_id': this.data.courseID,
-        'has_reserved': hasReserved, // 期望更改的状态
+        'has_reserved': expectReserved, // 期望更改的状态
       },
       success: res => {
-        var resp = res.data
+        let resp = res.data
         console.log('request reserve API ok: ', resp)
         if (resp.code != 0) {
           console.warn('request reserve API error:', resp.code, resp.msg)
           return
         }
-        var courseInfo = this.data.courseInfo
-        courseInfo.hasReserved = resp.data.has_reserved
+        let courseInfo = this.data.courseInfo
+        courseInfo.hasReserved = expectReserved
         this.setData({
           courseInfo: courseInfo,
         })

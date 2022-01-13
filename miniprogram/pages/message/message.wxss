@@ -2,15 +2,16 @@
 .reserve_or_not{
   display: flex;
   flex-direction: column;
-  margin: 0px 10px 10px 10px;
+  margin: 15rpx 30rpx;
   padding-left: 10px;
   border-radius: 8px;
   background-color: rgb(236, 244, 245);
-  border:1px solid rgb(0, 153, 255);
+  border: 5rpx solid rgb(0, 153, 255);
+  padding: 15rpx 30rpx;
 }
 
 .user_img{
-  width:40px;
+  width: 40px;
   height: 40px;
   margin: 10px 10px 10px 10px;
 }
@@ -20,8 +21,9 @@
   margin:0px 10px 10px 10px;
   background-color: rgb(236, 244, 245);
   font-size: small;
-  border:1px solid rgb(0, 153, 255);
+  border: 5rpx solid rgb(0, 153, 255);
   border-radius: 8px;
+  margin: 15rpx 30rpx;
 }
 
 .name_and_time{
@@ -35,6 +37,6 @@
   height: 50px;
   margin: 10px 10px 10px 10px;
   text-align: right;
-  color:rgb(254,176,160);
+  color:rgb(31, 93, 207);
   flex-grow: 1;
 }

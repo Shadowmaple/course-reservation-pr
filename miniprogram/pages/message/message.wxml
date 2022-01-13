@@ -3,14 +3,14 @@
   <block wx:if="{{message.type == 0}}">
     <view class="reserve_or_not">
       <view>预约成功：{{message.course_name}}</view>
-      <view>{{message.time}}</view>
+      <view style="color: rgb(31, 93, 207); margin-top: 4rpx;">{{message.time}}</view>
     </view>
   </block>
 
   <block wx:elif="{{message.type == 1}}">
     <view class="reserve_or_not">
       <view>取消预约成功：{{message.course_name}}</view>
-      <view>{{message.time}}</view>
+      <view style="color: rgb(31, 93, 207); margin-top: 4rpx;">{{message.time}}</view>
     </view>
   </block>
 
@@ -19,7 +19,7 @@
       <image class="user_img" src="{{message.useravatar}}"></image>
       <view class="name_and_time">
         <view><text style="font-weight:bold">{{message.user_name}}</text> 赞了我的评论</view>
-        <view style="color:rgb(254,176,160)">{{message.time}}</view>
+        <view style="color:rgb(31, 93, 207)">{{message.time}}</view>
       </view>
       <scroll-view class="comment"  scroll-y="true">{{message.comment_content}}</scroll-view>
     </view>
