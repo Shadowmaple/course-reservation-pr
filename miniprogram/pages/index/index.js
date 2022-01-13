@@ -127,7 +127,7 @@ Page({
       },
       success: res => {
         console.log("courselist res:",res.data)
-        var list = this.data.list_course
+        var list = res.data.data.list
         if (page == 0) {
           this.setData({
             list_course: res.data.data.list,
