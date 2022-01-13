@@ -2,11 +2,8 @@
 .reserve_or_not{
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-  margin: 10px 10px 0px 10px;
-=======
+  /* margin: 10px 10px 0px 10px; */
   margin: 15rpx 30rpx;
->>>>>>> 1dafbeb50b72a15f717586e8783b2ce1adc3d114
   padding-left: 10px;
   border-radius: 8px;
   background-color: rgb(236, 244, 245);
