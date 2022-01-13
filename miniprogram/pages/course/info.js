@@ -293,7 +293,7 @@ Page({
         token: app.globalData.token,
       },
       data: {
-        id: id,
+        comment_id: id,
         has_liked: expectLiked,
       },
       success: res => {
@@ -304,8 +304,8 @@ Page({
           return
         }
         var commentList = this.data.commentList
-        if (commentList.length() <= index) {
-          console.error('commentLike click error: index!=length: ', index, commentList.length())
+        if (commentList.length <= index) {
+          console.error('commentLike click error: index!=length: ', index, commentList.length)
           return
         }
         commentList[index].hasLiked = resp.has_liked
