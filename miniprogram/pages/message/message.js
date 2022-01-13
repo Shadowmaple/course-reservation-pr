@@ -59,7 +59,7 @@ Page({
       success: res => {
         console.log("messagelist res:",res.data)
         var list =  res.data.data.list
-        if(page == 0)
+        if(this.data.page == 0)
         {
           this.setData({
             list_message:res.data.data.list

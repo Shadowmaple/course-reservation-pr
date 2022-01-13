@@ -121,7 +121,7 @@ Page({
       success: res => {
         console.log("reservelist res:",res.data)
         var list = this.data.list_record
-        if(page==0)
+        if(this.data.page==0)
         {
           this.setData({
             list_record:res.data.data.list
