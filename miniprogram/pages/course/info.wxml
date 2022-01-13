@@ -33,7 +33,7 @@
       <button class="reserved-button" disabled="disabled">已开课</button>
     </block>
     <block wx:else>
-      <button class="reserved-button" disabled="disabled">课程已结束</button>
+      <button class="reserved-button" disabled="disabled">已结束</button>
     </block>
 
   </view>
