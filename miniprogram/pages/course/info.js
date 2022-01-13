@@ -76,6 +76,7 @@ Page({
       },
       success: res => {
         let resp = res.data
+        console.log('request courseInfo res:', resp)
         if (resp.code != 0) {
           console.warn('request courseInfo error:', resp.code, resp.msg)
           return
