@@ -121,17 +121,18 @@ Page({
       success: res => {
         console.log("reservelist res:",res.data)
         var list = this.data.list_record
+        var newlist = res.data.data.list
         if(page==0)
         {
           this.setData({
-            list_record:res.data.data.list
+            list_record:newlist
           })
         } else{
-          for (let item in list) {
-            this.data.list_record.push(list[item]);
+          for (let item in newlist) {
+            list.push(newlist[item]);
           }
           this.setData({
-              list_record:this.data.list_record
+              list_record:list
           })
         }
       },

@@ -128,16 +128,17 @@ Page({
       success: res => {
         console.log("courselist res:",res.data)
         var list = this.data.list_course
+        var newlist = res.data.data.list
         if (page == 0) {
           this.setData({
-            list_course: res.data.data.list,
+            list_course: newlist,
           })
         } else {   
-          for (let item in list) {
-            this.data.list_course.push(list[item]);
+          for (let item in newlist) {
+            list.push(newlist[item]);
           }
           this.setData({
-              list_course:this.data.list_course,
+              list_course:list,
           })
         }
       },
