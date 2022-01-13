@@ -178,9 +178,19 @@ Page({
         this.setData({
           courseInfo: courseInfo,
         })
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 1500
+        })
       },
       fail: res => {
         console.error('request reserve API error: ', res)
+        wx.showToast({
+          title: '程序内部错误',
+          icon: 'error',
+          duration: 1500
+        })
       },
     })
   },
@@ -225,6 +235,11 @@ Page({
         this.setData({
           commentList: commentList,
         })
+        wx.showToast({
+          title: '评论成功',
+          icon: 'success',
+          duration: 1500
+        })
       },
       fail: res => {
         console.error('request comment publish API error: ', res)
@@ -235,9 +250,17 @@ Page({
   // 点击预约/取消预约
   clickReserveCourse: function (event) {
     console.log('clickReserveCourse event:', event)
-    var expectRserved = !event.currentTarget.dataset.hasReserved // 期望更改的预约状态
+    let expectRserved = !event.currentTarget.dataset.hasReserved // 期望更改的预约状态
 
-    this.requestReservedAPI(expectRserved)
+    wx.showModal({
+      title: expectRserved ? "确认预约？":"确认取消预约？",
+      showCancel: true,
+      success: res => {
+        if (res.confirm) {
+          this.requestReservedAPI(expectRserved)
+        }
+      }
+    })
   },
 
   // 在评论框中输入内容触发的事件

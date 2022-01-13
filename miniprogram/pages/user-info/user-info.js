@@ -30,12 +30,17 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确认保存修改？',
-      success (res) {
+      success: res => {
         if (res.confirm) {
           this.setData({
             avatar: this.data.avatar,
             nickName: this.data.inputValue,
             hasUpdated: true,
+          })
+          wx.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 1500,
           })
         }
       },

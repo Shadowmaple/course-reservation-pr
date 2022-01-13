@@ -7,15 +7,16 @@ page {
   flex-direction: row;
   padding: 5px;
   /* background-color: black; */
-  border: 2px solid blue;
+  border: 2px solid #0099FF;
   border-radius: 8px;
   margin-bottom: 10px;
+  margin-top: 20rpx;
 }
 .search_icon{
   margin-right: 10px;
 }
 .search-text{
-  color: rgb(225,223,224);
+  /* color: rgb(225,223,224); */
   height:30px;
 }
 

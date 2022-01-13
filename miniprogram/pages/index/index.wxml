@@ -9,7 +9,7 @@
       </view>
     </view>
   </cover-view>
-  <view style="height:45px;background-color: red;"></view>
+  <view style="height:60px;background-color: red;"></view>
   <block wx:for="{{list_course}}" wx:for-item="course">
     <view class="course">
       <image class="img_course" src="{{course.image}}"></image>
