@@ -75,5 +75,67 @@ Page({
         console.log('request cardInfo failed: ', res)
       }
     })
-  }
+  },
+
+  // 点击充值
+  clickPayment: function () {
+    wx.showModal({
+      title: '积分充值',
+      content: '',
+      showCancel: true,
+      confirmText: '确定充值',
+      placeholderText: '输入充值金额',
+      editable: true,
+      success: res => {
+        console.log(res)
+        if (res.confirm) {
+          var value = res.content
+          wx.showModal({
+            title: "确认充值？",
+            showCancel: true,
+            confirmText: '确认',
+            success: res => {
+              if (res.confirm) {
+                this.requestUpdateBalance(value)
+                wx.showToast({
+                  title: '充值成功',
+                  icon: 'success',
+                  duration: 2000
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+
+  // 请求更改积分余额
+  requestUpdateBalance: function (value=Number) {
+    console.log('requestUpdateBalance: ', value)
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.cardBalancePath,
+      method: 'POST',
+      header: {
+        token: app.globalData.token,
+      },
+      data: {
+        value: value,
+        type: 1,
+      },
+      success: res => {
+        let resp = res.data
+        if (resp.code != 0) {
+          console.warn('request update balance error: ', resp.code, resp.msg)
+          return
+        }
+        this.setData({
+          balance: resp.data.balance,
+        })
+      },
+      fail: res => {
+        console.error('request update balance error: ', res)
+      }
+    })
+  },
 })

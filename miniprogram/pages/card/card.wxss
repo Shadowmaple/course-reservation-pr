@@ -107,3 +107,7 @@ page {
   height: 80rpx;
   border-bottom: 4rpx solid rgb(0, 153, 255);
 }
+
+.pay-button {
+  border: 2rpx solid rgb(0, 153, 255);
+}
