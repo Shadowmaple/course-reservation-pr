@@ -129,7 +129,7 @@ Page({
           return
         }
         var list = new Array
-        if (this.data.page > 0) {
+        if (page > 0) {
           list = this.data.commentList
         }
         for (let i in resp.data.list) {
