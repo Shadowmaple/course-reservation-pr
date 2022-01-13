@@ -154,7 +154,7 @@ App({
       url: this.globalData.apiHost + this.globalData.apiPath.userInfoPath,
       method: 'post',
       data: {
-        nickName: nickName,
+        nickname: nickName,
         avatar: avatar
       },
       header: {
