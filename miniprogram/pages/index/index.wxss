@@ -36,8 +36,8 @@ page {
   border:1px solid rgb(0, 153, 255);
 }
 .img_course{
-  width: 60px;
-  height: 40px;
+  width: 80px;
+  height: 60px;
   margin-left: 20px;
   margin-top: 5px;
 }
@@ -50,5 +50,5 @@ page {
   color:rgb(0, 153, 255);
   font-size: small;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 60px;
 }

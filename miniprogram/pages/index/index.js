@@ -14,6 +14,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -21,6 +22,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -28,6 +30,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -35,6 +38,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -42,6 +46,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -49,6 +54,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -56,6 +62,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
       {
         course_name: "高等数学",
@@ -63,6 +70,7 @@ Page({
         start_time: "2022-1-1",
         end_time: "2022-2-2",
         course_id: "233",
+        imgurl:"http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"
       },
     ]
   },
