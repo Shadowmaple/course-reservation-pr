@@ -219,11 +219,21 @@ Page({
         }
         // commentID不为0需要修改评论展示内容，发布新评论暂时先不考虑
         if (commentID == 0) {
+          // 刷新评论列表
+          this.requestCommentList(courseID, DefaultSize, 0)
+          wx.showToast({
+            title: '评论成功',
+            icon: 'success',
+            duration: 1500
+          })
           return
         }
-        var commentList = this.data.commentList
+
+        // -- 修改评论 --
+
+        let commentList = this.data.commentList
         // 查找目标评论
-        var index = 0
+        let index = 0
         for (; index < commentList.length(); index++) {
           if (commentList[index].id == commentID) {
             break
@@ -237,13 +247,18 @@ Page({
           commentList: commentList,
         })
         wx.showToast({
-          title: '评论成功',
+          title: '修改成功',
           icon: 'success',
           duration: 1500
         })
       },
       fail: res => {
         console.error('request comment publish API error: ', res)
+        wx.showToast({
+          title: '程序内部错误',
+          icon: 'error',
+          duration: 1500
+        })
       },
     })
   },
