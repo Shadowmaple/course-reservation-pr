@@ -151,7 +151,7 @@ Page({
    */
   onLoad: function (options) {
     this.requestCourseList(0);
-    this.data.page = +1
+    this.data.page = 1
   },
 
   /**

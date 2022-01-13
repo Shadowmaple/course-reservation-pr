@@ -95,7 +95,7 @@ Page({
       success: res => {
         console.log("reserve res:",res.data)
         var index=event.currentTarget.dataset.index
-        this.data.list_record[index].has_reserved = !this.data.has_reserved;
+        this.data.list_record[index].has_reserved = !(this.data.list_record[index].has_reserved);
         this.setData({
         })
       },
@@ -106,14 +106,14 @@ Page({
   },
 
   //请求预约列表
-  requestReserveList:function(){
+  requestReserveList:function(page){
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.reserveListPath,
       method: "get",
       data:{
         type:this.data.type,
         size:20,
-        page:this.data.page
+        page:page
       },
       header:{
         token:app.globalData.token
@@ -121,17 +121,17 @@ Page({
       success: res => {
         console.log("reservelist res:",res.data)
         var list = this.data.list_record
-        if(this.data.page==0)
+        if(page==0)
         {
           this.setData({
             list_record:res.data.data.list
           })
         } else{
           for (let item in list) {
-            this.list_record.push(list[item]);
+            this.data.list_record.push(list[item]);
           }
           this.setData({
-              list_record:this.list_record
+              list_record:this.data.list_record
           })
         }
       },
@@ -145,15 +145,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      page:0
-    })
-   this.requestReserveList()
-   this.setData(
-     {
-       page:1
-     }
-   )
+   this.requestReserveList(0)
+   this.data.page = 1
   },
 
   /**
@@ -191,13 +184,9 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 500)
-    this.setData({
-      page:0
-    })
-    this.requestReserveList();
-    this.setData({
-      page: 1
-    })
+
+    this.requestReserveList(0);
+    this.data.page = 1
   },
 
   /**
@@ -211,9 +200,7 @@ Page({
       wx.hideLoading()
     }, 500)
     this.requestReserveList(this.data.page);
-    this.setData({
-      page: this.data.page + 1
-    })
+   this.data.page = this.data.page+1
   },
 
   /**
