@@ -21,10 +21,10 @@
 
       <view class="card-record-item-value-box">
         <block wx:if="{{item.type == 0}}">
-          <text class="card-record-item-value">+{{item.value}}</text>
+          <text class="card-record-item-value">-{{item.value}}</text>
         </block>
         <block wx:elif="{{item.type == 1}}">
-          <text class="card-record-item-value">-{{item.value}}</text>
+          <text class="card-record-item-value">+{{item.value}}</text>
         </block>
       </view>
     </view>
