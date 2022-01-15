@@ -228,7 +228,7 @@ Page({
         // commentID不为0需要修改评论展示内容，发布新评论暂时先不考虑
         if (commentID == 0) {
           // 刷新评论列表
-          this.requestCommentList(courseID, DefaultSize, 0)
+          this.requestCommentList(this.data.courseID, DefaultSize, 0)
           wx.showToast({
             title: '评论成功',
             icon: 'success',

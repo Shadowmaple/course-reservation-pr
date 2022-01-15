@@ -11,9 +11,9 @@
   <block wx:for="{{list_record}}" wx:for-item="record" wx:for-index="index">
 
     <view class="{{record.status == 1?'open':(record.status == 0?'not_open':'finished')}}">
-      
-        <image src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
-        <navigator url="{{url + record.course_id}}" hover-class="navigator-hover">
+
+      <image src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
+      <navigator url="{{url + record.course_id}}" hover-class="navigator-hover">
         <view class="information">
           <view>{{record.course_name}}</view>
           <view>{{record.teacher_name}}</view>
@@ -39,16 +39,16 @@
       </block>
 
     </view>
-   
+
   </block>
 </block>
 <block wx:else>
   <block wx:for="{{list_record}}" wx:for-item="record">
 
     <view class="{{record.status == 1?'open':(record.status == 0?'not_open':'finished')}}">
-     
-        <image src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
-        <navigator url="{{url + record.course_id}}" hover-class="navigator-hover">
+
+      <image src="http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg"></image>
+      <navigator url="{{url + record.course_id}}" hover-class="navigator-hover">
         <view class="information">
           <view>{{record.course_name}}</view>
           <view>{{record.teacher_name}}</view>
@@ -69,6 +69,6 @@
         <view class="status" wx:else>未开课</view>
       </block>
     </view>
-    
+
   </block>
 </block>

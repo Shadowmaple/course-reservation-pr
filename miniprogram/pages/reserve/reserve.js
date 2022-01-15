@@ -83,6 +83,9 @@ Page({
   },
   //重新预约申请
   requestReserve:function(event){
+    // 点击的课程记录
+    let item = event.currentTarget.dataset.record
+
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.reserveCoursePath,
       method: "post",
@@ -99,6 +102,9 @@ Page({
         this.data.list_record[index].has_reserved = !(this.data.list_record[index].has_reserved);
         this.setData({
         })
+
+        // 发起修改积分请求
+        this.requestUpdateBalance(item.price, 0)
       },
       fail: res => {
         console.log("requestreserve failed")
@@ -143,40 +149,42 @@ Page({
     })
   },
 
+  // 请求更改积分余额
+  // 0->扣分，1->加分
+  requestUpdateBalance: function (value=Number, type=Number) {
+    console.log('requestUpdateBalance: ', value)
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.cardBalancePath,
+      method: 'POST',
+      header: {
+        token: app.globalData.token,
+      },
+      data: {
+        value: value,
+        type: type,
+      },
+      success: res => {
+        let resp = res.data
+        if (resp.code != 0) {
+          console.warn('request update balance error: ', resp.code, resp.msg)
+          return
+        }
+        this.setData({
+          balance: resp.data.balance,
+        })
+      },
+      fail: res => {
+        console.error('request update balance error: ', res)
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
    this.requestReserveList(0)
    this.data.page = 1
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   /**
@@ -204,10 +212,4 @@ Page({
     this.requestReserveList(this.data.page);
    this.data.page = this.data.page+1
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  }
 })
