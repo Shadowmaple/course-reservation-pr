@@ -89,7 +89,7 @@ Page({
       success: res => {
         console.log(res)
         if (res.confirm) {
-          var value = res.content
+          let value = int(res.content)
           wx.showModal({
             title: "确认充值？",
             showCancel: true,
