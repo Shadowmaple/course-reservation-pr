@@ -156,7 +156,12 @@ Page({
   },
 
   // 请求预约/取消预约API
-  requestReservedAPI: function (expectReserved = Boolean) {
+  requestReservedAPI: function (expectReserved = Boolean, price = Number) {
+    // 积分更改类型，0->扣分，1->加分
+    let balanceType = 0
+    if (!expectReserved) {
+      balanceType = 1
+    }
     wx.request({
       url: app.globalData.apiHost + app.globalData.apiPath.reserveCoursePath,
       method: 'POST',
@@ -184,6 +189,9 @@ Page({
           icon: 'success',
           duration: 1500
         })
+
+        // 发起积分更改请求
+        this.requestUpdateBalance(price, balanceType)
       },
       fail: res => {
         console.error('request reserve API error: ', res)
@@ -267,13 +275,14 @@ Page({
   clickReserveCourse: function (event) {
     console.log('clickReserveCourse event:', event)
     let expectRserved = !event.currentTarget.dataset.hasReserved // 期望更改的预约状态
+    let price = event.currentTarget.dataset.price // 积分费用
 
     wx.showModal({
       title: expectRserved ? "确认预约？":"确认取消预约？",
       showCancel: true,
       success: res => {
         if (res.confirm) {
-          this.requestReservedAPI(expectRserved)
+          this.requestReservedAPI(expectRserved, price)
         }
       }
     })
@@ -360,6 +369,36 @@ Page({
       fail: res => {
         console.error('request commentLike API error: ', res)
       },
+    })
+  },
+
+  // 请求更改积分余额
+  // 0->扣分，1->加分
+  requestUpdateBalance: function (value=Number, type=Number) {
+    console.log('requestUpdateBalance: ', value)
+    wx.request({
+      url: app.globalData.apiHost + app.globalData.apiPath.cardBalancePath,
+      method: 'POST',
+      header: {
+        token: app.globalData.token,
+      },
+      data: {
+        value: value,
+        type: type,
+      },
+      success: res => {
+        let resp = res.data
+        if (resp.code != 0) {
+          console.warn('request update balance error: ', resp.code, resp.msg)
+          return
+        }
+        this.setData({
+          balance: resp.data.balance,
+        })
+      },
+      fail: res => {
+        console.error('request update balance error: ', res)
+      }
     })
   },
 

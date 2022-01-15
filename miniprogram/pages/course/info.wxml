@@ -24,7 +24,7 @@
 
     <!-- 预约按钮 -->
     <block wx:if="{{courseInfo.status == 0}}">
-      <button class="reserved-button" catchtap="clickReserveCourse" data-has-reserved="{{courseInfo.hasReserved}}">
+      <button class="reserved-button" catchtap="clickReserveCourse" data-has-reserved="{{courseInfo.hasReserved}}" data-price="{{courseInfo.price}}">
         <block wx:if="{{courseInfo.hasReserved}}">取消预约</block>
         <block wx:else>预约</block>
       </button>
