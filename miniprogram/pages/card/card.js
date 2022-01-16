@@ -121,7 +121,7 @@ Page({
       },
       data: {
         value: value,
-        type: 1,
+        type: 2,
       },
       success: res => {
         let resp = res.data

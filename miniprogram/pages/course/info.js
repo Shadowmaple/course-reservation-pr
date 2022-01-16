@@ -157,7 +157,7 @@ Page({
 
   // 请求预约/取消预约API
   requestReservedAPI: function (expectReserved = Boolean, price = Number) {
-    // 积分更改类型，0->扣分，1->加分
+    // 积分更改类型，0->预约扣除，1->取消预约增加，2->充值增加
     let balanceType = 0
     if (!expectReserved) {
       balanceType = 1
@@ -373,7 +373,7 @@ Page({
   },
 
   // 请求更改积分余额
-  // 0->扣分，1->加分
+  // 0->预约扣除，1->取消预约增加，2->充值增加
   requestUpdateBalance: function (value=Number, type=Number) {
     console.log('requestUpdateBalance: ', value)
     wx.request({
